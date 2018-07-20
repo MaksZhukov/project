@@ -1,0 +1,1 @@
+export const SUB_ACTIONS_TYPES = ['SUCCESS', 'ERROR', 'LOADING'];
