@@ -1,10 +1,21 @@
-const MongoClient = require('mongodb').MongoClient;
-const test = require('assert');
-// Connection url
-const url = 'mongodb://localhost:27017';
-// Database Name
-const dbName = 'test';
-// Connect using MongoClient
-MongoClient.connect(url, function(err, client) {
-  
+const mongoose = require('mongoose');
+
+const UserSchema = new mongoose.Schema({
+  profileId: Number,
+  name: String,
+  mail: String,
+  pass: String,
+  provider: String,
+  token: String,
+  active: Boolean,
+  created: {
+    type: Date,
+    default: new Date(),
+  },
+  updated: {
+    type: Date,
+    default: new Date(),
+  },
 });
+
+module.exports = mongoose.model('users', UserSchema);

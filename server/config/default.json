@@ -1,0 +1,7 @@
+{
+  "urlClient": "http://localhost:3001",
+  "urlServer": "http://localhost:3000",
+  "portServer": "3000",
+  "dbName": "react_video_games",
+  "jsonWebTokenSecret": "secret"
+}
