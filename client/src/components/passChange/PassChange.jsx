@@ -1,9 +1,21 @@
 import React from 'react';
+import queryString from 'query-string';
+import { ToastStore } from 'react-toasts';
 import './PassChange.sass';
-import { ToastContainer, ToastStore } from 'react-toasts';
 
 class PassChange extends React.PureComponent {
   state = { pass: '', repass: '' };
+
+  componentWillMount() {
+    const { props } = this;
+    console.log(props);
+    const { token } = queryString.parse(props.location.search);
+    if (token) {
+      props.checkTokenChangePass(token);
+    } else {
+      props.history.push('/');
+    }
+  }
 
   handlerInput = ({ target }) => {
     this.setState({ [target.name]: target.value });
@@ -40,7 +52,6 @@ class PassChange extends React.PureComponent {
             <input type="submit" className="form-sign-up-submit btn btn-orange" value="Change" />
           </div>
         </form>
-        <ToastContainer position={ToastContainer.POSITION.TOP_RIGHT} store={ToastStore} />
       </React.Fragment>
     );
   }
