@@ -7,6 +7,7 @@ const htmlWebpackPlugin = new HtmlWebPackPlugin({
 
 module.exports = {
   entry: './src/index.jsx',
+  devtool: 'cheap-module-source-map',
   devServer: {
     historyApiFallback: true,
     port: 3001,
