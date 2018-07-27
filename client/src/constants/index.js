@@ -1,1 +1,2 @@
-export const SUB_ACTIONS_TYPES = ['SUCCESS', 'ERROR', 'LOADING'];
+const SUB_ACTIONS_TYPES = ['SUCCESS', 'ERROR', 'LOADING'];
+export default SUB_ACTIONS_TYPES;
