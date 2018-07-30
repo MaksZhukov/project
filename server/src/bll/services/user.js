@@ -3,20 +3,22 @@ const logger = require('../../common/helpers/winston');
 const User = require('../../models/user');
 const transporter = require('../../common/helpers/mail');
 const { encrypt } = require('../../common/helpers/encryption');
-const { urlClient, urlServer, jsonWebTokenSecret } = require('config');
+const {
+  urlClient, urlServer, jsonWebToken, client,
+} = require('config');
 
 async function searchUser(searchData) {
   let response = '';
   await User.findOne(searchData, (err, user) => {
     if (err) {
       logger.error(err);
-      response = { client: { status: 'error', message: 'problem with database' }, isUser: false };
+      response = { client: client.response.errDatabase, isUser: false };
     }
     if (user && user.active) {
-      response = { client: { status: 'warning', message: 'user has already been registered' }, isUser: true };
+      response = { client: client.response.registeredUser, isUser: true };
     }
     if (user && !user.active) {
-      response = { client: { status: 'warning', message: 'check your mail' }, isUser: true };
+      response = { client: client.response.registeredUserNoConfirm, isUser: true };
     }
     return '';
   });
@@ -24,17 +26,17 @@ async function searchUser(searchData) {
 }
 
 async function sendMail(mail, options = {
-  subject: 'Registration',
-  text: 'Confirm you registration by',
-  message: 'confirm your mail',
+  subject: client.mailRegistration.subject,
+  text: client.mailRegistration.text,
+  message: client.mailRegistration.message,
   urlHost: urlServer,
   path: 'api/sign-up/jwt/callback',
 
 }) {
   let response = '';
-  const token = jwt.sign({ mail }, jsonWebTokenSecret, { expiresIn: '1 day' });
+  const token = jwt.sign({ mail }, jsonWebToken.secret, jsonWebToken.expresIn);
   await transporter.sendMail({
-    from: 'video games <videogames@gmail.com>', to: mail, subject: options.subject, html: `<b>${options.text}: </b><a href="${options.urlHost}/${options.path}?token=${token}">link</a>`,
+    from: client.mailRegistration.from, to: mail, subject: options.subject, html: `<b>${options.text}: </b><a href="${options.urlHost}/${options.path}?token=${token}">link</a>`,
   }).then((info) => {
     if (info) {
       logger.info(info);
@@ -43,7 +45,7 @@ async function sendMail(mail, options = {
   }).catch((err) => {
     if (err) {
       logger.error(err);
-      response = { client: { status: 'error', message: 'problem with sending mail' } };
+      response = { client: client.response.errMail };
     }
   });
   return response;
@@ -65,7 +67,7 @@ async function createUser(dataFromUser, token) {
   }, (err) => {
     if (err) {
       logger.error(err);
-      response = { client: { status: 'error', message: 'problem with database' } };
+      response = { client: client.response.errDatabase };
     }
   });
   return response;
@@ -73,12 +75,14 @@ async function createUser(dataFromUser, token) {
 
 function verifyToken(token) {
   let response = '';
-  jwt.verify(token, jsonWebTokenSecret, (errVerify, decoded) => {
+  jwt.verify(token, jsonWebToken.secret, (errVerify, decoded) => {
     if (errVerify) {
       logger.error(errVerify);
+      response = { client: client.response.errToken, error: true };
+    } else {
+      const { mail } = decoded;
+      response = { mail };
     }
-    const { mail } = decoded;
-    response = mail;
   });
   return response;
 }
@@ -95,10 +99,10 @@ async function updateUser(searchData, set, unset) {
     (errUser, user) => {
       if (errUser) {
         logger.error(errUser);
-        response = { client: { status: 'error', message: 'problem with database' }, error: true };
+        response = { client: client.response.errDatabase, error: true };
       } else {
         user.save();
-        response = { client: { status: 'success', message: 'pass has been changed' }, error: false };
+        response = { client: client.response.changedPass, error: false };
       }
     });
   return response;

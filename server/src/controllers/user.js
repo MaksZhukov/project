@@ -1,5 +1,5 @@
 const passport = require('passport');
-const { urlClient, urlServer } = require('config');
+const { urlClient, urlServer, client } = require('config');
 const {
   createUser, updateUser, sendMail, searchUser, verifyToken, addTokenToUser,
 } = require('../bll/services/user');
@@ -31,8 +31,9 @@ app.post('/api/sign-up/jwt', (req, res) => {
 
 app.get('/api/sign-up/jwt/callback', (req, res) => {
   const { token } = req.query;
-  const mail = verifyToken(token);
-  if (mail) {
+  const responseVerify = verifyToken(token);
+  if (responseVerify.mail) {
+    const mail = responseVerify;
     updateUser({ mail }, { active: true }, { token }).then((responseUpdate) => {
       if (!responseUpdate.error) {
         res.redirect(`${urlClient}/sign-in`);
@@ -49,7 +50,7 @@ app.post('/api/recovery-pass', (req, res) => {
       res.json(responseSearch.client);
     } else {
       sendMail(mail, {
-        subject: 'Recovery pass', text: 'Confirm your recovery pass', message: 'check your mail', urlHost: urlClient, path: 'pass-change',
+        subject: client.mailRecovery.subject, text: client.mailRecovery.text, message: client.mailRecovery.message, urlHost: urlClient, path: 'pass-change',
       }).then((responseMail) => {
         if (responseMail.token) {
           const { token } = responseMail;
@@ -69,20 +70,19 @@ app.post('/api/recovery-pass', (req, res) => {
 
 app.post('/api/pass-change/token', (req, res) => {
   const { token } = req.body;
-  searchUser({ token }).then((responseSearch) => {
-    if (responseSearch.isUser) {
-      res.json({ access: true });
-    } else {
-      res.json({ access: false });
-    }
-  });
+  const responseVerify = verifyToken(token);
+  if (responseVerify.mail) {
+    res.json({ access: true });
+  } else {
+    res.json({ access: false });
+  }
 });
 
 app.post('/api/pass-change', (req, res) => {
   const { token, pass } = req.body;
   searchUser({ token }).then((responseSearch) => {
     if (responseSearch.isUser) {
-      updateUser({ mail: 'maks_zhukov_97@mail.ru' }, { pass: encrypt(pass) }, { token }).then((responseUpdate) => {
+      updateUser({ token }, { pass: encrypt(pass) }, { token }).then((responseUpdate) => {
         res.json(responseUpdate.client);
       });
     } else {

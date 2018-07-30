@@ -1,7 +1,8 @@
 const crypto = require('crypto');
+const config = require('config');
 
-const algorithm = 'aes192';
-const password = 'd6F3Efeq';
+const algorithm = config.crypto.algorithm;
+const password = config.crypto.password;
 
 function encrypt(text) {
   const cipher = crypto.createCipher(algorithm, password);

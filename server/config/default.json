@@ -2,6 +2,72 @@
   "urlClient": "http://localhost:3001",
   "urlServer": "http://localhost:3000",
   "portServer": "3000",
-  "dbName": "react_video_games",
-  "jsonWebTokenSecret": "secret"
+  "dataBase": {
+    "name": "react_video_games",
+    "collections": {
+      "users": "users"
+    }
+  },
+  "client":{
+    "mailRecovery": {
+      "subject": "Recovery pass",
+      "text": "Confirm your recovery pass",
+      "message": "check your mail"
+    },
+    "mailRegistration": {
+      "subject": "Registration",
+      "text": "Confirm your registration by",
+      "message": "confirm your mail",
+      "from": "video games <videogames@gmail.com>"
+    },
+    "response": {
+      "errDatabase": {
+        "status": "error",
+        "message": "problem with database"
+      },
+      "errMail": {
+        "status": "error",
+        "message": "problem with sending mail"
+      },
+      "errMail": {
+        "status": "error",
+        "message": "incorrect token"
+      },
+      "registeredUser": {
+        "status": "warning",
+        "message": "user has already been registered"
+      },
+      "registeredUserNoConfirm": {
+        "status": "warning",
+        "message": "check your mail"
+      },
+      "changedPass": {
+        "status": "success",
+        "message": "pass has been changed"
+      }
+    }
+  },
+  "passport": {
+    "facebook": {
+      "clientID": "288788318526735",
+      "clientSecret": "3697fac765dfbfe4587ddeda0952053a",
+      "callbackURL": "http://localhost:3000/sign-up/facebook/callback"
+    }
+  },
+  "jsonWebToken": {
+    "secret": "secret",
+    "expiresIn": "1 day"
+  },
+  "mail": {
+    "service": "gmail",
+    "port": "587",
+    "auth": {
+      "user": "malabar7778892@gmail.com",
+      "pass": "ytngfhjkz199719971997"
+    }
+  },
+  "crypto": {
+    "algorithm": "aes192",
+    "password": "d6F3Efeq"
+  }
 }
