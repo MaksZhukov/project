@@ -1,19 +1,33 @@
 import React from 'react';
 import queryString from 'query-string';
+import PropTypes from 'prop-types';
 import { ToastStore } from 'react-toasts';
+import { Redirect } from 'react-router-dom';
 import './PassChange.sass';
 
 class PassChange extends React.PureComponent {
-  state = { pass: '', repass: '' };
+  static propTypes = {
+    user: PropTypes.object.isRequired,
+  }
 
-  componentWillMount() {
+  state = { pass: '', repass: '', token: '' };
+
+  componentDidMount() {
     const { props } = this;
-    console.log(props);
     const { token } = queryString.parse(props.location.search);
+    this.setState({ token });
     if (token) {
       props.checkTokenChangePass(token);
     } else {
       props.history.push('/');
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { user } = nextProps;
+    if (user.responseChangePass.loading === false) {
+      const { status, message } = user.responseChangePass;
+      ToastStore[status](message);
     }
   }
 
@@ -23,9 +37,10 @@ class PassChange extends React.PureComponent {
 
   handlerChangePassSubmit = (event) => {
     event.preventDefault();
-    const { pass, repass } = this.state;
+    const { pass, repass, token } = this.state;
+    const { props } = this;
     if (pass === repass) {
-
+      props.changePass({ token, pass });
     } else {
       ToastStore.error('Password and confirm password are not equal');
     }
@@ -33,27 +48,34 @@ class PassChange extends React.PureComponent {
 
   render() {
     const { pass, repass } = this.state;
-    return (
-      <React.Fragment>
-        <form className="form-pass-recovery form-sign" onSubmit={this.handlerChangePassSubmit}>
-          <div className="form-group">
-            <label htmlFor="form-pass-recovery-pass" className="form-pass-recovery-label-pass">
-            Password
-              <input id="form-pass-recovery-pass" required type="password" name="pass" className="form-pass-recovery-pass form-control" value={pass} onInput={this.handlerInput} />
-            </label>
-          </div>
-          <div className="form-group">
-            <label htmlFor="form-pass-recovery-repass" className="form-pass-recovery-label-repass">
-            Confirm the password
-              <input id="form-pass-recovery-repass" required type="password" name="repass" className="form-pass-recovery-repass form-control" value={repass} onInput={this.handlerInput} />
-            </label>
-          </div>
-          <div className="form-group">
-            <input type="submit" className="form-sign-up-submit btn btn-orange" value="Change" />
-          </div>
-        </form>
-      </React.Fragment>
-    );
+    const { user } = this.props;
+    if (user.responseCheckTokenChangePass.loading === false) {
+      if (user.responseCheckTokenChangePass.access) {
+        return (
+          <React.Fragment>
+            <form className="form-pass-recovery form-sign" onSubmit={this.handlerChangePassSubmit}>
+              <div className="form-group">
+                <label htmlFor="form-pass-recovery-pass" className="form-pass-recovery-label-pass">
+                      Password
+                  <input id="form-pass-recovery-pass" required type="password" name="pass" className="form-pass-recovery-pass form-control" value={pass} onInput={this.handlerInput} />
+                </label>
+              </div>
+              <div className="form-group">
+                <label htmlFor="form-pass-recovery-repass" className="form-pass-recovery-label-repass">
+                      Confirm the password
+                  <input id="form-pass-recovery-repass" required type="password" name="repass" className="form-pass-recovery-repass form-control" value={repass} onInput={this.handlerInput} />
+                </label>
+              </div>
+              <div className="form-group">
+                <input type="submit" className="form-sign-up-submit btn btn-orange" value="Change" />
+              </div>
+            </form>
+          </React.Fragment>
+        );
+      }
+      return <Redirect to="/" />;
+    }
+    return null;
   }
 }
 

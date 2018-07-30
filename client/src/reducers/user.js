@@ -1,9 +1,14 @@
 import { handleActions } from 'redux-actions';
 import {
-  signUpSuccess, signUpError, signUpLoading, forgotPassSuccess, forgotPassError, forgotPassLoading,
+  signUpSuccess, signUpError, signUpLoading, forgotPassSuccess, forgotPassError, forgotPassLoading, checkTokenChangePassError, checkTokenChangePassSuccess, checkTokenChangePassLoading, changePassError, changePassLoading, changePassSuccess,
 } from '../actions/user';
 
-const defaultState = {};
+const defaultState = {
+  responseSignUp: { },
+  responseForgotPass: { },
+  responseCheckTokenChangePass: { },
+  responseChangePass: { },
+};
 const reducer = handleActions({
   [signUpSuccess](state, { payload: responseSignUp }) {
     return { ...state, responseSignUp };
@@ -22,6 +27,24 @@ const reducer = handleActions({
   },
   [forgotPassLoading](state, { payload: responseForgotPass }) {
     return { ...state, responseForgotPass };
+  },
+  [checkTokenChangePassSuccess](state, { payload: responseCheckTokenChangePass }) {
+    return { ...state, responseCheckTokenChangePass };
+  },
+  [checkTokenChangePassError](state, { payload: responseCheckTokenChangePass }) {
+    return { ...state, responseCheckTokenChangePass };
+  },
+  [checkTokenChangePassLoading](state, { payload: responseCheckTokenChangePass }) {
+    return { ...state, responseCheckTokenChangePass };
+  },
+  [changePassSuccess](state, { payload: responseChangePass }) {
+    return { ...state, responseChangePass };
+  },
+  [changePassError](state, { payload: responseChangePass }) {
+    return { ...state, responseChangePass };
+  },
+  [changePassLoading](state, { payload: responseChangePass }) {
+    return { ...state, responseChangePass };
   },
 },
 defaultState);

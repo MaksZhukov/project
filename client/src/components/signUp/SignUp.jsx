@@ -15,9 +15,11 @@ class SignUp extends React.PureComponent {
 
   componentWillReceiveProps(nextProps) {
     const { user } = nextProps;
-    if (user.responseSignUp !== 'loading' && user.responseSignUp) {
+    if (user.responseSignUp.loading === false) {
       const { status, message } = user.responseSignUp;
-      ToastStore[status](message);
+      if (message && status) {
+        ToastStore[status](message);
+      }
     }
   }
 
@@ -34,7 +36,7 @@ class SignUp extends React.PureComponent {
   render() {
     const { name, mail, pass } = this.state;
     const { user } = this.props;
-    const loading = user.responseSignUp === 'loading';
+    const loading = user.responseSignUp.loading === true;
     return (
       <React.Fragment>
         <form className="form-sign-up form-sign" onSubmit={this.handlerSubmit}>

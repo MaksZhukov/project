@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { FadeLoader } from 'react-spinners';
+import classNames from 'classnames';
+import { ToastStore } from 'react-toasts';
+
 import './SignIn.sass';
-import { ToastContainer, ToastStore } from 'react-toasts';
 
 class SignIn extends React.PureComponent {
   static propTypes = {
@@ -13,7 +16,7 @@ class SignIn extends React.PureComponent {
 
   componentWillReceiveProps(nextProps) {
     const { user } = nextProps;
-    if (user.responseForgotPass !== 'loading') {
+    if (user.responseForgotPass.loading === false) {
       const { status, message } = user.responseForgotPass;
       ToastStore[status](message);
     }
@@ -31,6 +34,8 @@ class SignIn extends React.PureComponent {
 
   render() {
     const { mail, pass } = this.state;
+    const { user } = this.props;
+    const loading = user.responseForgotPass.loading === true;
     return (
       <React.Fragment>
         <form className="form-sign-in form-sign">
@@ -67,6 +72,12 @@ class SignIn extends React.PureComponent {
             <a href="/" className="form-sign-in-facebook btn btn-blue">
             Facebook
             </a>
+          </div>
+          <div className={classNames({ loader: true, 'loader-active': loading })}>
+            <FadeLoader
+              color="#123abc"
+              loading={loading}
+            />
           </div>
         </form>
       </React.Fragment>

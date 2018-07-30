@@ -1,36 +1,28 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { Route, Switch, Redirect } from 'react-router-dom';
-import queryString from 'query-string';
+import { connect } from 'react-redux';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import { ToastContainer, ToastStore } from 'react-toasts';
 import SignInContainer from './container/SignIn';
-import PassChange from './components/passChange/PassChange';
+import PassChangeContainer from './container/PassChange';
 import SignUpContainer from './container/SignUp';
-import { initStore, getStore } from './store';
 
 class App extends React.PureComponent {
   componentWillMount() {
-    const { props } = this;
-    const { token } = queryString.parse(props.location.search);
-    localStorage.setItem('token', token);
-    initStore();
+
   }
 
   render() {
     return (
-      <div>
-        <Provider store={getStore()}>
-          <Switch>
-            <Route path="/sign-in" component={SignInContainer} />
-            <Route path="/sign-up" component={SignUpContainer} />
-            <Route path="/pass-change" component={PassChange} />
-            <Redirect from="/" to="/sign-in" />
-          </Switch>
-        </Provider>
+      <React.Fragment>
+        <Switch>
+          <Route path="/sign-in" component={SignInContainer} />
+          <Route path="/sign-up" component={SignUpContainer} />
+          <Route path="/pass-change" component={PassChangeContainer} />
+        </Switch>
         <ToastContainer position={ToastContainer.POSITION.TOP_RIGHT} store={ToastStore} />
-      </div>
+      </React.Fragment>
     );
   }
 }
 
-export default App;
+export default withRouter(connect()(App));

@@ -11,7 +11,12 @@ export const forgotPassSuccess = createAction(user.FORGOT_PASS_USER.SUCCESS);
 export const forgotPassError = createAction(user.FORGOT_PASS_USER.ERROR);
 export const forgotPassLoading = createAction(user.FORGOT_PASS_USER.LOADING);
 
-export const checkTokenChangePass = createAction(user.TOKEN_PASS_CHANGE_USER.ACTION);
-export const checkTokenChangePassSuccess = createAction(user.FORGOT_PASS_USER.SUCCESS);
-export const checkTokenChangePassError = createAction(user.FORGOT_PASS_USER.ERROR);
-export const checkTokenChangePassSuccessLoading = createAction(user.FORGOT_PASS_USER.LOADING);
+export const checkTokenChangePass = createAction(user.СHECK_TOKEN_CHANGE_PASS_USER.ACTION);
+export const checkTokenChangePassSuccess = createAction(user.СHECK_TOKEN_CHANGE_PASS_USER.SUCCESS);
+export const checkTokenChangePassError = createAction(user.СHECK_TOKEN_CHANGE_PASS_USER.ERROR);
+export const checkTokenChangePassLoading = createAction(user.СHECK_TOKEN_CHANGE_PASS_USER.LOADING);
+
+export const changePass = createAction(user.CHANGE_PASS_USER.ACTION);
+export const changePassSuccess = createAction(user.CHANGE_PASS_USER.SUCCESS);
+export const changePassError = createAction(user.CHANGE_PASS_USER.ERROR);
+export const changePassLoading = createAction(user.CHANGE_PASS_USER.LOADING);

@@ -15,7 +15,7 @@ const fetchResponseForgotPass = mail => fetch('/api/recovery-pass', {
   },
   body: JSON.stringify({ mail }),
 }).then(response => response.json()).then(data => data);
-const fetchResponsePassChangeToken = token => fetch('/api/pass-change/token', {
+const fetchResponseCheckTokenChangePass = token => fetch('/api/pass-change/token', {
   method: 'POST',
   headers: {
     Accept: 'application/json',
@@ -23,4 +23,15 @@ const fetchResponsePassChangeToken = token => fetch('/api/pass-change/token', {
   },
   body: JSON.stringify({ token }),
 }).then(response => response.json()).then(data => data);
-export default { fetchResponseSignUp, fetchResponseForgotPass, fetchResponsePassChangeToken };
+
+const fetchResponseChangePass = dataFromUser => fetch('/api/pass-change', {
+  method: 'POST',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(dataFromUser),
+}).then(response => response.json()).then(data => data);
+export default {
+  fetchResponseSignUp, fetchResponseForgotPass, fetchResponseCheckTokenChangePass, fetchResponseChangePass,
+};
