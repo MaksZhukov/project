@@ -1,10 +1,15 @@
 import { handleActions } from 'redux-actions';
 import {
-  signUpSuccess, signUpError, signUpLoading, forgotPassSuccess, forgotPassError, forgotPassLoading, checkTokenChangePassError, checkTokenChangePassSuccess, checkTokenChangePassLoading, changePassError, changePassLoading, changePassSuccess,
+  signUpSuccess, signUpError, signUpLoading,
+  forgotPassSuccess, forgotPassError, forgotPassLoading,
+  checkTokenChangePassError, checkTokenChangePassSuccess, checkTokenChangePassLoading,
+  changePassError, changePassLoading, changePassSuccess,
+  signInError, signInLoading, signInSuccess,
 } from '../actions/user';
 
 const defaultState = {
   responseSignUp: { },
+  responseSignIn: {},
   responseForgotPass: { },
   responseCheckTokenChangePass: { },
   responseChangePass: { },
@@ -45,6 +50,15 @@ const reducer = handleActions({
   },
   [changePassLoading](state, { payload: responseChangePass }) {
     return { ...state, responseChangePass };
+  },
+  [signInSuccess](state, { payload: responseSignIn }) {
+    return { ...state, responseSignIn };
+  },
+  [signInError](state, { payload: responseSignIn }) {
+    return { ...state, responseSignIn };
+  },
+  [signInLoading](state, { payload: responseSignIn }) {
+    return { ...state, responseSignIn };
   },
 },
 defaultState);

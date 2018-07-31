@@ -10,10 +10,4 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   signUp: dataFromUser => dispatch(signUp(dataFromUser)),
 });
-const mergeProps = (stateProps, dispatchProps, ownProps) => {
-  const { match, location, staticContext } = ownProps;
-  return {
-    ...stateProps, ...dispatchProps, match, location, staticContext,
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(SignUp);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

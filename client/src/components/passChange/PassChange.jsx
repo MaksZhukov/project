@@ -1,8 +1,10 @@
 import React from 'react';
 import queryString from 'query-string';
 import PropTypes from 'prop-types';
-import { ToastStore } from 'react-toasts';
+import ToastStore from 'react-toasts';
 import { Redirect } from 'react-router-dom';
+import { FadeLoader } from 'react-spinners';
+import classNames from 'classnames';
 import './PassChange.sass';
 
 class PassChange extends React.PureComponent {
@@ -20,14 +22,6 @@ class PassChange extends React.PureComponent {
       props.checkTokenChangePass(token);
     } else {
       props.history.push('/');
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { user } = nextProps;
-    if (user.responseChangePass.loading === false) {
-      const { status, message } = user.responseChangePass;
-      ToastStore[status](message);
     }
   }
 
@@ -49,6 +43,7 @@ class PassChange extends React.PureComponent {
   render() {
     const { pass, repass } = this.state;
     const { user } = this.props;
+    const loading = user.responseChangePass.loading === true;
     if (user.responseCheckTokenChangePass.loading === false) {
       if (user.responseCheckTokenChangePass.access) {
         return (
@@ -56,18 +51,24 @@ class PassChange extends React.PureComponent {
             <form className="form-pass-recovery form-sign" onSubmit={this.handlerChangePassSubmit}>
               <div className="form-group">
                 <label htmlFor="form-pass-recovery-pass" className="form-pass-recovery-label-pass">
-                      Password
+                  Password
                   <input id="form-pass-recovery-pass" required type="password" name="pass" className="form-pass-recovery-pass form-control" value={pass} onInput={this.handlerInput} />
                 </label>
               </div>
               <div className="form-group">
                 <label htmlFor="form-pass-recovery-repass" className="form-pass-recovery-label-repass">
-                      Confirm the password
+                  Confirm the password
                   <input id="form-pass-recovery-repass" required type="password" name="repass" className="form-pass-recovery-repass form-control" value={repass} onInput={this.handlerInput} />
                 </label>
               </div>
               <div className="form-group">
                 <input type="submit" className="form-sign-up-submit btn btn-orange" value="Change" />
+              </div>
+              <div className={classNames({ loader: true, 'loader-active': loading })}>
+                <FadeLoader
+                  color="#123abc"
+                  loading={loading}
+                />
               </div>
             </form>
           </React.Fragment>

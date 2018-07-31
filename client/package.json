@@ -20,13 +20,13 @@
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
-    "react-router-redux": "^4.0.8",
+    "react-router-redux": "^5.0.0-alpha.9",
     "react-spinners": "^0.3.3",
     "react-toasts": "^2.0.12",
     "react-virtualized": "^9.20.1",
     "recompose": "^0.27.1",
     "redux": "^4.0.0",
-    "redux-actions": "^2.4.0",
+    "redux-actions": "^2.6.1",
     "redux-define": "^1.1.1",
     "redux-saga": "^0.16.0",
     "reselect": "^3.0.1"
@@ -46,8 +46,8 @@
     "redux-devtools-extension": "^2.13.5",
     "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
-    "webpack": "^4.16.1",
+    "webpack": "^4.16.3",
     "webpack-cli": "^2.0.10",
-    "webpack-dev-server": "^3.1.0"
+    "webpack-dev-server": "^3.1.5"
   }
 }

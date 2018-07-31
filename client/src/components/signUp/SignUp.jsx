@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import { ToastStore } from 'react-toasts';
 import { FadeLoader } from 'react-spinners';
 import './SignUp.sass';
 
@@ -12,16 +11,6 @@ class SignUp extends React.PureComponent {
   }
 
   state = { name: '', mail: '', pass: '' };
-
-  componentWillReceiveProps(nextProps) {
-    const { user } = nextProps;
-    if (user.responseSignUp.loading === false) {
-      const { status, message } = user.responseSignUp;
-      if (message && status) {
-        ToastStore[status](message);
-      }
-    }
-  }
 
   handlerInput = ({ target }) => {
     this.setState({ [target.name]: target.value });
@@ -41,8 +30,11 @@ class SignUp extends React.PureComponent {
       <React.Fragment>
         <form className="form-sign-up form-sign" onSubmit={this.handlerSubmit}>
           <div className="form-group justify-content-around">
-            <Link to="/sign-in" className="btn text-uppercase link-sign-in">
-              sign in
+            <Link
+              to="/sign-in"
+              className="btn text-uppercase link-sign-in"
+            >
+                sign in
             </Link>
             <Link to="/sign-up" className="btn btn-active text-uppercase link-sign-up">
               join us!

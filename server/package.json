@@ -9,6 +9,7 @@
   "author": "Max Zhukov",
   "license": "ISC",
   "dependencies": {
+    "agenda": "^2.0.0",
     "body-parser": "^1.18.3",
     "config": "^1.31.0",
     "express": "^4.16.3",
@@ -24,5 +25,8 @@
     "socket.io": "^2.1.1",
     "socketio-jwt": "^4.5.0",
     "winston": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
   }
 }

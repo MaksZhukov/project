@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken');
 const logger = require('../../common/helpers/winston');
 const User = require('../../models/user');
 const transporter = require('../../common/helpers/mail');
-const { encrypt } = require('../../common/helpers/encryption');
 const {
   urlClient, urlServer, jsonWebToken, client,
 } = require('config');
@@ -14,11 +13,17 @@ async function searchUser(searchData) {
       logger.error(err);
       response = { client: client.response.errDatabase, isUser: false };
     }
-    if (user && user.active) {
+    if (user && user.active && !searchData.pass) {
       response = { client: client.response.registeredUser, isUser: true };
+    }
+    if (user && user.active && searchData.pass) {
+      response = { isFind: true };
     }
     if (user && !user.active) {
       response = { client: client.response.registeredUserNoConfirm, isUser: true };
+    }
+    if (!user) {
+      response = { client: client.response.searchUserNotFound, isUser: false };
     }
     return '';
   });
@@ -51,43 +56,21 @@ async function sendMail(mail, options = {
   return response;
 }
 
-async function createUser(dataFromUser, token) {
+async function createUser(userData, searchField = 'mail') {
   let response = '';
-  const userData = {
-    name: dataFromUser.name,
-    mail: dataFromUser.mail,
-    pass: encrypt(dataFromUser.pass),
-    provider: null,
-    token,
-    active: false,
-  };
-  await User.findOneAndUpdate({ mail: dataFromUser.mail }, userData, {
+  await User.findOneAndUpdate({ [searchField]: userData[searchField] }, userData, {
     upsert: true,
     setDefaultsOnInsert: true,
   }, (err) => {
     if (err) {
       logger.error(err);
-      response = { client: client.response.errDatabase };
+      response = { client: client.response.errDatabase, error: true };
     }
   });
   return response;
 }
 
-function verifyToken(token) {
-  let response = '';
-  jwt.verify(token, jsonWebToken.secret, (errVerify, decoded) => {
-    if (errVerify) {
-      logger.error(errVerify);
-      response = { client: client.response.errToken, error: true };
-    } else {
-      const { mail } = decoded;
-      response = { mail };
-    }
-  });
-  return response;
-}
-
-async function updateUser(searchData, set, unset) {
+async function updateUser(searchData, set, unset, toClient = client.response.changedPass) {
   let response = '';
   const updated = { $set: { ...set, updated: new Date() } };
   if (unset) {
@@ -102,7 +85,7 @@ async function updateUser(searchData, set, unset) {
         response = { client: client.response.errDatabase, error: true };
       } else {
         user.save();
-        response = { client: client.response.changedPass, error: false };
+        response = { client: toClient, error: false };
       }
     });
   return response;
@@ -110,5 +93,5 @@ async function updateUser(searchData, set, unset) {
 
 
 module.exports = {
-  createUser, updateUser, sendMail, searchUser, verifyToken,
+  createUser, updateUser, sendMail, searchUser,
 };

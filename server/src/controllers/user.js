@@ -1,8 +1,12 @@
 const passport = require('passport');
-const { urlClient, urlServer, client } = require('config');
+const jwt = require('jsonwebtoken');
 const {
-  createUser, updateUser, sendMail, searchUser, verifyToken, addTokenToUser,
+  urlClient, urlServer, client, jsonWebToken,
+} = require('config');
+const {
+  createUser, updateUser, sendMail, searchUser,
 } = require('../bll/services/user');
+const { defineTaskRemoveUser } = require('../bll/services/scheduler');
 const { encrypt } = require('../common/helpers/encryption');
 const app = require('../app');
 
@@ -10,13 +14,22 @@ app.post('/api/sign-up/jwt', (req, res) => {
   const dataFromUser = req.body;
   const { mail } = dataFromUser;
   searchUser({ mail }).then((responseSearch) => {
-    if (responseSearch) {
+    if (responseSearch.isUser) {
       res.json(responseSearch.client);
     } else {
       sendMail(mail).then((responseMail) => {
         if (responseMail.token) {
-          createUser(dataFromUser, responseMail.token).then((responseCreate) => {
+          const dataUser = {
+            name: dataFromUser.name,
+            mail: dataFromUser.mail,
+            pass: encrypt(dataFromUser.pass),
+            provider: null,
+            token: responseMail.token,
+            active: false,
+          };
+          createUser(dataUser).then((responseCreate) => {
             if (!responseCreate) {
+              defineTaskRemoveUser('remove user', { mail: dataFromUser.mail });
               res.json(responseMail.client);
             } else {
               res.json(responseCreate.client);
@@ -31,15 +44,15 @@ app.post('/api/sign-up/jwt', (req, res) => {
 
 app.get('/api/sign-up/jwt/callback', (req, res) => {
   const { token } = req.query;
-  const responseVerify = verifyToken(token);
-  if (responseVerify.mail) {
-    const mail = responseVerify;
-    updateUser({ mail }, { active: true }, { token }).then((responseUpdate) => {
-      if (!responseUpdate.error) {
-        res.redirect(`${urlClient}/sign-in`);
-      }
-    });
-  }
+  searchUser({ token }).then((responseSearch) => {
+    if (responseSearch.isUser) {
+      updateUser({ token }, { active: true }, { token }).then((responseUpdate) => {
+        if (!responseUpdate.error) {
+          res.redirect(`${urlClient}/sign-in`);
+        }
+      });
+    }
+  });
 });
 
 
@@ -70,19 +83,20 @@ app.post('/api/recovery-pass', (req, res) => {
 
 app.post('/api/pass-change/token', (req, res) => {
   const { token } = req.body;
-  const responseVerify = verifyToken(token);
-  if (responseVerify.mail) {
-    res.json({ access: true });
-  } else {
-    res.json({ access: false });
-  }
+  searchUser({ token }).then((responseSearch) => {
+    if (responseSearch.isUser) {
+      res.json({ access: true });
+    } else {
+      res.json({ access: false });
+    }
+  });
 });
 
 app.post('/api/pass-change', (req, res) => {
   const { token, pass } = req.body;
   searchUser({ token }).then((responseSearch) => {
     if (responseSearch.isUser) {
-      updateUser({ token }, { pass: encrypt(pass) }, { token }).then((responseUpdate) => {
+      updateUser({ token }, { pass: encrypt(pass) }, { token }, client.response.changedPass).then((responseUpdate) => {
         res.json(responseUpdate.client);
       });
     } else {
@@ -91,6 +105,7 @@ app.post('/api/pass-change', (req, res) => {
   });
 });
 
+
 app.get('/sign-up/facebook', passport.authenticate('facebook'));
 
 app.get('/sign-up/facebook/callback',
@@ -98,6 +113,60 @@ app.get('/sign-up/facebook/callback',
     failureRedirect: `${urlClient}/sign-up`,
   }),
   (req, res) => {
-    const redirectUri = `${urlClient}/sign-up?token=${req.user}`;
-    res.redirect(redirectUri);
+    const { user } = req;
+    const dataUser = {
+      profileId: user.id,
+      name: user.displayName,
+      provider: user.provider,
+      token: user.accessToken,
+      active: true,
+    };
+    createUser(dataUser, 'profileId').then((responseCreate) => {
+      if (!responseCreate) {
+        const redirectUri = `${urlClient}/?token=${user.accessToken}`;
+        res.redirect(redirectUri);
+      }
+    });
   });
+
+
+app.get('/sign-in/facebook', passport.authenticate('facebook'));
+
+app.get('/sign-in/facebook/callback',
+  passport.authenticate('facebook', {
+    failureRedirect: `${urlClient}/sign-up`,
+  }),
+  (req, res) => {
+    const { user } = req;
+    const dataUser = {
+      profileId: user.id,
+      name: user.displayName,
+      provider: user.provider,
+      token: user.accessToken,
+      active: true,
+    };
+    createUser(dataUser, 'profileId').then((responseCreate) => {
+      if (!responseCreate) {
+        const redirectUri = `${urlClient}/sign-up?token=${user.accessToken}`;
+        res.redirect(redirectUri);
+      }
+    });
+  });
+
+app.post('/api/sign-in', (req, res) => {
+  const { mail, pass } = req.body;
+  searchUser({ mail, pass: encrypt(pass) }).then((responseSearch) => {
+    if (responseSearch.isFind) {
+      const token = jwt.sign({ mail }, jsonWebToken.secret, jsonWebToken.expresIn);
+      updateUser({ mail }, { token }, null, client.response.signIn).then((responseUpdate) => {
+        if (responseUpdate.client === client.response.signIn) {
+          res.json({ ...responseUpdate.client, token });
+        } else {
+          res.json(responseUpdate.client);
+        }
+      });
+    } else {
+      res.json(responseSearch.client);
+    }
+  });
+});

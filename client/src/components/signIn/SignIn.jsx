@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { FadeLoader } from 'react-spinners';
 import classNames from 'classnames';
-import { ToastStore } from 'react-toasts';
 
 import './SignIn.sass';
 
@@ -14,16 +13,14 @@ class SignIn extends React.PureComponent {
 
   state = { mail: '', pass: '' };
 
-  componentWillReceiveProps(nextProps) {
-    const { user } = nextProps;
-    if (user.responseForgotPass.loading === false) {
-      const { status, message } = user.responseForgotPass;
-      ToastStore[status](message);
-    }
-  }
-
   handlerInput = ({ target }) => {
     this.setState({ [target.name]: target.value });
+  }
+
+  handlerSubmit = (event) => {
+    event.preventDefault();
+    const { props, state } = this;
+    props.signIn(state);
   }
 
   handlerForgotPass = () => {
@@ -35,10 +32,10 @@ class SignIn extends React.PureComponent {
   render() {
     const { mail, pass } = this.state;
     const { user } = this.props;
-    const loading = user.responseForgotPass.loading === true;
+    const loading = user.responseForgotPass.loading === true || user.responseSignIn.loading === true;
     return (
       <React.Fragment>
-        <form className="form-sign-in form-sign">
+        <form className="form-sign-in form-sign" onSubmit={this.handlerSubmit}>
           <div className="form-group justify-content-around">
             <Link to="/sign-in" className="btn btn-active text-uppercase link-sign-in">
             sign in
@@ -55,7 +52,7 @@ class SignIn extends React.PureComponent {
           </div>
           <div className="form-group">
             <label htmlFor="form-sign-in-pass" className="form-sign-in-label-pass">
-            Password
+           Password
               <input id="form-sign-in-pass" type="password" name="pass" className="form-sign-in-pass form-control" value={pass} onInput={this.handlerInput} />
             </label>
           </div>
@@ -69,7 +66,7 @@ class SignIn extends React.PureComponent {
           Sign In With
           </div>
           <div className="form-group mb-none">
-            <a href="/" className="form-sign-in-facebook btn btn-blue">
+            <a href="http://localhost:3000/sign-in/facebook" className="form-sign-in-facebook btn btn-blue">
             Facebook
             </a>
           </div>

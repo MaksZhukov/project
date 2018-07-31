@@ -20,3 +20,8 @@ export const changePass = createAction(user.CHANGE_PASS_USER.ACTION);
 export const changePassSuccess = createAction(user.CHANGE_PASS_USER.SUCCESS);
 export const changePassError = createAction(user.CHANGE_PASS_USER.ERROR);
 export const changePassLoading = createAction(user.CHANGE_PASS_USER.LOADING);
+
+export const signIn = createAction(user.SIGNIN_USER.ACTION);
+export const signInSuccess = createAction(user.SIGNIN_USER.SUCCESS);
+export const signInError = createAction(user.SIGNIN_USER.ERROR);
+export const signInLoading = createAction(user.SIGNIN_USER.LOADING);

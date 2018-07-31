@@ -29,9 +29,13 @@
         "status": "error",
         "message": "problem with sending mail"
       },
-      "errMail": {
+      "signIn": {
+        "status": "success",
+        "message": "login successful"
+      },
+      "searchUserNotFound": {
         "status": "error",
-        "message": "incorrect token"
+        "message": "user not found"
       },
       "registeredUser": {
         "status": "warning",
@@ -51,7 +55,8 @@
     "facebook": {
       "clientID": "288788318526735",
       "clientSecret": "3697fac765dfbfe4587ddeda0952053a",
-      "callbackURL": "http://localhost:3000/sign-up/facebook/callback"
+      "callbackURL": "http://localhost:3000/sign-up/facebook/callback",
+      "enableProof": true
     }
   },
   "jsonWebToken": {
