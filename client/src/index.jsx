@@ -2,9 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
-import { Router, Route, withRouter } from 'react-router-dom';
-import store from './store';
-import history from './history';
+import { Route } from 'react-router-dom';
+import { store, history } from './store';
 import App from './App';
 import './index.sass';
 

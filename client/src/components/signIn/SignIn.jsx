@@ -47,13 +47,13 @@ class SignIn extends React.PureComponent {
           <div className="form-group">
             <label htmlFor="form-sign-in-mail" className="form-sign-in-label-mail">
             Email Address
-              <input id="form-sign-in-mail" type="email" name="mail" className="form-sign-in-mail form-control" value={mail} onInput={this.handlerInput} />
+              <input id="form-sign-in-mail" required type="email" name="mail" className="form-sign-in-mail form-control" value={mail} onInput={this.handlerInput} />
             </label>
           </div>
           <div className="form-group">
             <label htmlFor="form-sign-in-pass" className="form-sign-in-label-pass">
            Password
-              <input id="form-sign-in-pass" type="password" name="pass" className="form-sign-in-pass form-control" value={pass} onInput={this.handlerInput} />
+              <input id="form-sign-in-pass" required type="password" name="pass" className="form-sign-in-pass form-control" value={pass} onInput={this.handlerInput} />
             </label>
           </div>
           <div className="form-group">

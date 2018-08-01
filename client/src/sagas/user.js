@@ -12,7 +12,6 @@ import {
 } from '../actions/user';
 import user from '../actionTypes/user';
 import apiUser from '../api/user';
-import history from '../history';
 
 function* fetchResponseSignUp(action) {
   try {
@@ -60,7 +59,6 @@ function* fetchResponseChangePass(action) {
     if (responseChangePass.status === 'success') {
       yield put(push('/sign-in'));
     }
-    ToastStore[responseChangePass.status](responseChangePass.message);
   } catch (err) {
     yield put(changePassError({ loading: false }));
   }

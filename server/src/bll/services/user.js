@@ -58,10 +58,7 @@ async function sendMail(mail, options = {
 
 async function createUser(userData, searchField = 'mail') {
   let response = '';
-  await User.findOneAndUpdate({ [searchField]: userData[searchField] }, userData, {
-    upsert: true,
-    setDefaultsOnInsert: true,
-  }, (err) => {
+  await User.create(userData, (err) => {
     if (err) {
       logger.error(err);
       response = { client: client.response.errDatabase, error: true };
@@ -83,7 +80,8 @@ async function updateUser(searchData, set, unset, toClient = client.response.cha
       if (errUser) {
         logger.error(errUser);
         response = { client: client.response.errDatabase, error: true };
-      } else {
+      }
+      if (user) {
         user.save();
         response = { client: toClient, error: false };
       }
