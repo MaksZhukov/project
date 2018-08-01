@@ -5,6 +5,7 @@ import {
   checkTokenChangePassError, checkTokenChangePassSuccess, checkTokenChangePassLoading,
   changePassError, changePassLoading, changePassSuccess,
   signInError, signInLoading, signInSuccess,
+  checkTokenError, checkTokenLoading, checkTokenSuccess,
 } from '../actions/user';
 
 const defaultState = {
@@ -13,6 +14,7 @@ const defaultState = {
   responseForgotPass: { },
   responseCheckTokenChangePass: { },
   responseChangePass: { },
+  responseCheckToken: { },
 };
 const reducer = handleActions({
   [signUpSuccess](state, { payload: responseSignUp }) {
@@ -59,6 +61,15 @@ const reducer = handleActions({
   },
   [signInLoading](state, { payload: responseSignIn }) {
     return { ...state, responseSignIn };
+  },
+  [checkTokenSuccess](state, { payload: responseCheckToken }) {
+    return { ...state, responseCheckToken };
+  },
+  [checkTokenError](state, { payload: responseCheckToken }) {
+    return { ...state, responseCheckToken };
+  },
+  [checkTokenLoading](state, { payload: responseCheckToken }) {
+    return { ...state, responseCheckToken };
   },
 },
 defaultState);

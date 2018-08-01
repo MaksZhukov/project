@@ -9,6 +9,7 @@ import {
   checkTokenChangePassError, checkTokenChangePassSuccess, checkTokenChangePassLoading,
   changePassError, changePassSuccess, changePassLoading,
   signInError, signInLoading, signInSuccess,
+  checkTokenError, checkTokenLoading, checkTokenSuccess,
 } from '../actions/user';
 import user from '../actionTypes/user';
 import apiUser from '../api/user';
@@ -81,6 +82,17 @@ function* fetchResponseSignIn(action) {
   }
 }
 
+function* fetchResponseCheckToken(action) {
+  try {
+    yield put(checkTokenLoading({ loading: true }));
+    const responseCheckToken = yield call(apiUser.fetchResponseCheckToken, action.payload);
+    responseCheckToken.loading = false;
+    yield put(checkTokenSuccess(responseCheckToken));
+  } catch (err) {
+    yield put(checkTokenError({ loading: false }));
+  }
+}
+
 function* watchLastSagas() {
   yield all([
     takeLatest(user.FORGOT_PASS_USER.ACTION, fetchResponseForgotPass),
@@ -88,6 +100,7 @@ function* watchLastSagas() {
     takeLatest(user.СHECK_TOKEN_CHANGE_PASS_USER.ACTION, fetchResponseCheckTokenChangePass),
     takeLatest(user.CHANGE_PASS_USER.ACTION, fetchResponseChangePass),
     takeLatest(user.SIGNIN_USER.ACTION, fetchResponseSignIn),
+    takeLatest(user.СHECK_TOKEN_USER.ACTION, fetchResponseCheckToken),
   ]);
 }
 

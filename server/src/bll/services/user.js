@@ -14,13 +14,13 @@ async function searchUser(searchData) {
       response = { client: client.response.errDatabase, isUser: false };
     }
     if (user && user.active && !searchData.pass) {
-      response = { client: client.response.registeredUser, isUser: true };
+      response = { client: client.response.registeredUser, isUser: true, user: { name: user.name } };
     }
     if (user && user.active && searchData.pass) {
-      response = { isFind: true };
+      response = { isUser: true, user: { name: user.name } };
     }
     if (user && !user.active) {
-      response = { client: client.response.registeredUserNoConfirm, isUser: true };
+      response = { client: client.response.registeredUserNoConfirm, isUser: true, user: { name: user.name } };
     }
     if (!user) {
       response = { client: client.response.searchUserNotFound, isUser: false };

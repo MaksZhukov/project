@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import PassChange from '../components/passChange/PassChange';
-import { checkTokenChangePass, changePass } from '../actions/user';
+import PassChange from '../components/PassChange';
+import { checkTokenChangePass, changePass } from '../../../actions/user';
 
 
 const mapStateToProps = state => ({

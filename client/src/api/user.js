@@ -42,6 +42,15 @@ const fetchResponseSignIn = dataFromUser => fetch('/api/sign-in', {
   body: JSON.stringify(dataFromUser),
 }).then(response => response.json()).then(data => data);
 
+const fetchResponseCheckToken = token => fetch('/api/check-token', {
+  method: 'POST',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ token }),
+}).then(response => response.json()).then(data => data);
+
 export default {
-  fetchResponseSignUp, fetchResponseForgotPass, fetchResponseCheckTokenChangePass, fetchResponseChangePass, fetchResponseSignIn
+  fetchResponseSignUp, fetchResponseForgotPass, fetchResponseCheckTokenChangePass, fetchResponseChangePass, fetchResponseSignIn, fetchResponseCheckToken,
 };

@@ -156,7 +156,7 @@ app.get('/sign-in/facebook/callback',
 app.post('/api/sign-in', (req, res) => {
   const { mail, pass } = req.body;
   searchUser({ mail, pass: encrypt(pass) }).then((responseSearch) => {
-    if (responseSearch.isFind) {
+    if (responseSearch.isUser) {
       const token = jwt.sign({ mail }, jsonWebToken.secret, jsonWebToken.expresIn);
       updateUser({ mail }, { token }, null, client.response.signIn).then((responseUpdate) => {
         if (responseUpdate.client === client.response.signIn) {
@@ -167,6 +167,15 @@ app.post('/api/sign-in', (req, res) => {
       });
     } else {
       res.json(responseSearch.client);
+    }
+  });
+});
+
+app.post('/api/check-token', (req, res) => {
+  const { token } = req.body;
+  searchUser({ token }).then((responseSearch) => {
+    if (responseSearch.isUser) {
+      res.json({ user: responseSearch.user });
     }
   });
 });
