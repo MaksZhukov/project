@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const { dataBase } = require('config');
+import mongoose from 'mongoose';
+import config from 'config';
 
 const UserSchema = new mongoose.Schema({
   profileId: Number,
@@ -19,4 +19,4 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model(dataBase.collections.users, UserSchema);
+export default mongoose.model(config.dataBase.collections.users, UserSchema);

@@ -1,14 +1,12 @@
-const passport = require('passport');
-const jwt = require('jsonwebtoken');
-const {
-  urlClient, urlServer, client, jsonWebToken,
-} = require('config');
-const {
+import passport from 'passport';
+import jwt from 'jsonwebtoken';
+import config from 'config';
+import {
   createUser, updateUser, sendMail, searchUser,
-} = require('../bll/services/user');
-const { defineTaskRemoveUser } = require('../bll/services/scheduler');
-const { encrypt } = require('../common/helpers/encryption');
-const app = require('../app');
+} from '../bll/services/user.mjs';
+import agenda from '../bll/services/scheduler/index.mjs';
+import { encrypt } from '../common/helpers/encryption/index.mjs';
+import app from '../app.mjs';
 
 app.post('/api/sign-up/jwt', (req, res) => {
   const dataFromUser = req.body;
@@ -29,7 +27,7 @@ app.post('/api/sign-up/jwt', (req, res) => {
           };
           createUser(dataUser).then((responseCreate) => {
             if (!responseCreate) {
-              defineTaskRemoveUser('remove user', { mail: dataFromUser.mail });
+              agenda.defineTaskRemoveUser('remove user', { mail: dataFromUser.mail });
               res.json(responseMail.client);
             } else {
               res.json(responseCreate.client);
@@ -48,7 +46,7 @@ app.get('/api/sign-up/jwt/callback', (req, res) => {
     if (responseSearch.isUser) {
       updateUser({ token }, { active: true }, { token }).then((responseUpdate) => {
         if (!responseUpdate.error) {
-          res.redirect(`${urlClient}/sign-in`);
+          res.redirect(`${config.urlClient}/sign-in`);
         }
       });
     }
@@ -63,7 +61,7 @@ app.post('/api/recovery-pass', (req, res) => {
       res.json(responseSearch.client);
     } else {
       sendMail(mail, {
-        subject: client.mailRecovery.subject, text: client.mailRecovery.text, message: client.mailRecovery.message, urlHost: urlClient, path: 'pass-change',
+        subject: config.client.mailRecovery.subject, text: config.client.mailRecovery.text, message: config.client.mailRecovery.message, urlHost: config.urlClient, path: 'pass-change',
       }).then((responseMail) => {
         if (responseMail.token) {
           const { token } = responseMail;
@@ -96,9 +94,10 @@ app.post('/api/pass-change', (req, res) => {
   const { token, pass } = req.body;
   searchUser({ token }).then((responseSearch) => {
     if (responseSearch.isUser) {
-      updateUser({ token }, { pass: encrypt(pass) }, { token }, client.response.changedPass).then((responseUpdate) => {
-        res.json(responseUpdate.client);
-      });
+      updateUser({ token }, { pass: encrypt(pass) }, { token }, config.client.response.changedPass)
+        .then((responseUpdate) => {
+          res.json(responseUpdate.client);
+        });
     } else {
       res.json(responseSearch.client);
     }
@@ -110,7 +109,7 @@ app.get('/sign-up/facebook', passport.authenticate('facebook'));
 
 app.get('/sign-up/facebook/callback',
   passport.authenticate('facebook', {
-    failureRedirect: `${urlClient}/sign-up`,
+    failureRedirect: `${config.urlClient}/sign-up`,
   }),
   (req, res) => {
     const { user } = req;
@@ -123,7 +122,7 @@ app.get('/sign-up/facebook/callback',
     };
     createUser(dataUser, 'profileId').then((responseCreate) => {
       if (!responseCreate) {
-        const redirectUri = `${urlClient}/?token=${user.accessToken}`;
+        const redirectUri = `${config.urlClient}/?token=${user.accessToken}`;
         res.redirect(redirectUri);
       }
     });
@@ -134,7 +133,7 @@ app.get('/sign-in/facebook', passport.authenticate('facebook'));
 
 app.get('/sign-in/facebook/callback',
   passport.authenticate('facebook', {
-    failureRedirect: `${urlClient}/sign-up`,
+    failureRedirect: `${config.urlClient}/sign-up`,
   }),
   (req, res) => {
     const { user } = req;
@@ -147,7 +146,7 @@ app.get('/sign-in/facebook/callback',
     };
     createUser(dataUser, 'profileId').then((responseCreate) => {
       if (!responseCreate) {
-        const redirectUri = `${urlClient}/sign-up?token=${user.accessToken}`;
+        const redirectUri = `${config.urlClient}/sign-up?token=${user.accessToken}`;
         res.redirect(redirectUri);
       }
     });
@@ -157,14 +156,15 @@ app.post('/api/sign-in', (req, res) => {
   const { mail, pass } = req.body;
   searchUser({ mail, pass: encrypt(pass) }).then((responseSearch) => {
     if (responseSearch.isUser) {
-      const token = jwt.sign({ mail }, jsonWebToken.secret, jsonWebToken.expresIn);
-      updateUser({ mail }, { token }, null, client.response.signIn).then((responseUpdate) => {
-        if (responseUpdate.client === client.response.signIn) {
-          res.json({ ...responseUpdate.client, token });
-        } else {
-          res.json(responseUpdate.client);
-        }
-      });
+      const token = jwt.sign({ mail }, config.jsonWebToken.secret, config.jsonWebToken.expresIn);
+      updateUser({ mail }, { token }, null, config.client.response.signIn)
+        .then((responseUpdate) => {
+          if (responseUpdate.client === config.client.response.signIn) {
+            res.json({ ...responseUpdate.client, token });
+          } else {
+            res.json(responseUpdate.client);
+          }
+        });
     } else {
       res.json(responseSearch.client);
     }

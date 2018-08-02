@@ -5,18 +5,26 @@ import { Link, Redirect } from 'react-router-dom';
 import { FadeLoader } from 'react-spinners';
 import './SignUp.sass';
 
+
 class SignUp extends React.PureComponent {
   static propTypes = {
     user: PropTypes.object.isRequired,
   }
 
-  state = { name: '', mail: '', pass: '' };
+  state = {
+    name: '', mail: '', pass: '', isToken: false,
+  };
 
   componentWillMount() {
     const { props } = this;
     if (localStorage.getItem('token')) {
+      this.setState({ isToken: true });
       props.checkToken(localStorage.getItem('token'));
     }
+  }
+
+  componentWillReceiveProps(newProps) {
+    console.log(newProps);
   }
 
   handlerInput = ({ target }) => {
@@ -30,11 +38,13 @@ class SignUp extends React.PureComponent {
   }
 
   render() {
-    const { name, mail, pass } = this.state;
+    const {
+      name, mail, pass, isToken,
+    } = this.state;
     const { user } = this.props;
     const loading = user.responseSignUp.loading === true;
-    if (user.responseCheckToken.loading === false) {
-      if (!user.responseCheckToken.user) {
+    if (user.responseCheckToken.loading === false || !isToken) {
+      if (!user.responseCheckToken.user || !isToken) {
         return (
           <React.Fragment>
             <form className="form-sign-up form-sign" onSubmit={this.handlerSubmit}>

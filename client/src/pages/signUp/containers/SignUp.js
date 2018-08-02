@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import SignUp from '../components/SignUp';
 import { signUp, checkToken } from '../../../actions/user';
 
-
 const mapStateToProps = state => ({
   user: state.user,
 });
