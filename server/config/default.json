@@ -48,6 +48,10 @@
       "changedPass": {
         "status": "success",
         "message": "pass has been changed"
+      },
+      "checkToken": {
+        "status": "success",
+        "message": "token is valid"
       }
     }
   },

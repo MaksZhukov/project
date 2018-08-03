@@ -18,54 +18,40 @@ const styles = ({
 });
 
 class NavBar extends React.PureComponent {
-  componentWillMount() {
-    const { props } = this;
-    const { location } = props;
-    const token = localStorage.getItem('token') || queryString.parse(location.search).token;
-    if (token) {
-      props.checkToken(token);
-    } else {
-      props.push('/sign-in');
-    }
-  }
-
   render() {
     const { props } = this;
     const { classes } = props;
-    const { responseCheckToken } = props;
-    if (responseCheckToken.loading === false) {
-      if (responseCheckToken.user) {
-        return (
-          <React.Fragment>
-            <AppBar position="fixed">
-              <Grid container spacing={16} className={classes.container} align="center">
-                <Grid item xs="auto" style={{ alignSelf: 'center' }}>
-                  <BrokenImage />
-                </Grid>
-                <Grid item xs="auto" style={{ alignSelf: 'center' }}>
-                  <Link to="/explore" className={classes.link}>
-                      Discovery
-                  </Link>
-                </Grid>
-                <Grid item xs="auto" style={{ alignSelf: 'center' }}>
-                  <Link to="/games" className={classes.link}>
-                      My
-                    <br />
-                      Games
-                  </Link>
-                </Grid>
-                <Grid item xs />
-                <Grid item xs="auto" style={{ alignSelf: 'center' }}>
-                  <Link to="/user/:id" className={classes.link}>
-                    {responseCheckToken.user.name}
-                  </Link>
-                </Grid>
+    const { user } = props;
+    if (user.userInfo !== null) {
+      return (
+        <React.Fragment>
+          <AppBar position="fixed">
+            <Grid container spacing={16} className={classes.container} align="center">
+              <Grid item xs="auto" style={{ alignSelf: 'center' }}>
+                <BrokenImage />
               </Grid>
-            </AppBar>
-          </React.Fragment>
-        );
-      }
-      return <Redirect to="/sign-in" />;
+              <Grid item xs="auto" style={{ alignSelf: 'center' }}>
+                <Link to="/explore" className={classes.link}>
+                      Discovery
+                </Link>
+              </Grid>
+              <Grid item xs="auto" style={{ alignSelf: 'center' }}>
+                <Link to="/games" className={classes.link}>
+                      My
+                  <br />
+                      Games
+                </Link>
+              </Grid>
+              <Grid item xs />
+              <Grid item xs="auto" style={{ alignSelf: 'center' }}>
+                <Link to="/user/:id" className={classes.link}>
+                  {user.userInfo.name}
+                </Link>
+              </Grid>
+            </Grid>
+          </AppBar>
+        </React.Fragment>
+      );
     }
     return null;
   }

@@ -21,7 +21,7 @@ class PassChange extends React.PureComponent {
     if (token) {
       props.checkTokenChangePass(token);
     } else {
-      props.history.push('/');
+      props.push('/sign-in');
     }
   }
 

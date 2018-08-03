@@ -69,10 +69,10 @@ function* fetchResponseSignIn(action) {
   try {
     yield put(signInLoading({ loading: true }));
     const responseSignIn = yield call(apiUser.fetchResponseSignIn, action.payload);
-    responseSignIn.loading = false;
+    responseSignIn.response.loading = false;
     yield put(signInSuccess(responseSignIn));
-    if (responseSignIn.status === 'success') {
-      localStorage.setItem('token', responseSignIn.token);
+    if (responseSignIn.response.status === 'success') {
+      localStorage.setItem('token', responseSignIn.userInfo.token);
       yield put(push('/'));
     } else {
       ToastStore[responseSignIn.status](responseSignIn.message);
@@ -86,7 +86,7 @@ function* fetchResponseCheckToken(action) {
   try {
     yield put(checkTokenLoading({ loading: true }));
     const responseCheckToken = yield call(apiUser.fetchResponseCheckToken, action.payload);
-    responseCheckToken.loading = false;
+    responseCheckToken.response.loading = false;
     yield put(checkTokenSuccess(responseCheckToken));
   } catch (err) {
     yield put(checkTokenError({ loading: false }));

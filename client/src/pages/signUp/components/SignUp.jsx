@@ -16,10 +16,8 @@ class SignUp extends React.PureComponent {
   };
 
   componentWillMount() {
-    const { props } = this;
     if (localStorage.getItem('token')) {
       this.setState({ isToken: true });
-      props.checkToken(localStorage.getItem('token'));
     }
   }
 
@@ -44,7 +42,7 @@ class SignUp extends React.PureComponent {
     const { user } = this.props;
     const loading = user.responseSignUp.loading === true;
     if (user.responseCheckToken.loading === false || !isToken) {
-      if (!user.responseCheckToken.user || !isToken) {
+      if (!user.userInfo) {
         return (
           <React.Fragment>
             <form className="form-sign-up form-sign" onSubmit={this.handlerSubmit}>

@@ -9,6 +9,7 @@ import {
 } from '../actions/user';
 
 const defaultState = {
+  userInfo: null,
   responseSignUp: { },
   responseSignIn: {},
   responseForgotPass: { },
@@ -53,8 +54,8 @@ const reducer = handleActions({
   [changePassLoading](state, { payload: responseChangePass }) {
     return { ...state, responseChangePass };
   },
-  [signInSuccess](state, { payload: responseSignIn }) {
-    return { ...state, responseSignIn };
+  [signInSuccess](state, { payload: { response, userInfo } }) {
+    return { ...state, responseSignIn: response, userInfo };
   },
   [signInError](state, { payload: responseSignIn }) {
     return { ...state, responseSignIn };
@@ -62,8 +63,8 @@ const reducer = handleActions({
   [signInLoading](state, { payload: responseSignIn }) {
     return { ...state, responseSignIn };
   },
-  [checkTokenSuccess](state, { payload: responseCheckToken }) {
-    return { ...state, responseCheckToken };
+  [checkTokenSuccess](state, { payload: { response, userInfo } }) {
+    return { ...state, responseCheckToken: response, userInfo };
   },
   [checkTokenError](state, { payload: responseCheckToken }) {
     return { ...state, responseCheckToken };

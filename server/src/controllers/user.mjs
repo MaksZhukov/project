@@ -160,7 +160,7 @@ app.post('/api/sign-in', (req, res) => {
       updateUser({ mail }, { token }, null, config.client.response.signIn)
         .then((responseUpdate) => {
           if (responseUpdate.client === config.client.response.signIn) {
-            res.json({ ...responseUpdate.client, token });
+            res.json({ response: responseUpdate.client, userInfo: { ...responseSearch.user, token } });
           } else {
             res.json(responseUpdate.client);
           }
@@ -175,7 +175,7 @@ app.post('/api/check-token', (req, res) => {
   const { token } = req.body;
   searchUser({ token }).then((responseSearch) => {
     if (responseSearch.isUser) {
-      res.json({ user: responseSearch.user });
+      res.json({ response: config.client.response.checkToken, userInfo: { ...responseSearch.user, token } });
     }
   });
 });

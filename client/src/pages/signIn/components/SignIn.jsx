@@ -14,10 +14,8 @@ class SignIn extends React.PureComponent {
   state = { mail: '', pass: '', isToken: false };
 
   componentWillMount() {
-    const { props } = this;
     if (localStorage.getItem('token')) {
       this.setState({ isToken: true });
-      props.checkToken(localStorage.getItem('token'));
     }
   }
 
@@ -42,7 +40,7 @@ class SignIn extends React.PureComponent {
     const { user } = this.props;
     const loading = user.responseForgotPass.loading === true || user.responseSignIn.loading === true;
     if (user.responseCheckToken.loading === false || !isToken) {
-      if (!user.responseCheckToken.user || !isToken) {
+      if (!user.userInfo) {
         return (
           <React.Fragment>
             <form className="form-sign-in form-sign" onSubmit={this.handlerSubmit}>
