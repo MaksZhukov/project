@@ -1,8 +1,8 @@
 import React from 'react';
-import queryString from 'query-string';
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import { BrokenImage } from '@material-ui/icons';
+import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
 
@@ -13,6 +13,7 @@ const styles = ({
   link: {
     color: '#fff',
     textDecoration: 'none',
+    textAlign: 'center',
     textTransform: 'uppercase',
   },
 });
@@ -20,30 +21,32 @@ const styles = ({
 class NavBar extends React.PureComponent {
   render() {
     const { props } = this;
-    const { classes } = props;
-    const { user } = props;
+    const { classes, user } = props;
     if (user.userInfo !== null) {
       return (
         <React.Fragment>
           <AppBar position="fixed">
-            <Grid container spacing={16} className={classes.container} align="center">
-              <Grid item xs="auto" style={{ alignSelf: 'center' }}>
+            <Grid container spacing={16} alignItems="center" className={classes.container}>
+              <Grid item xs="auto">
                 <BrokenImage />
               </Grid>
-              <Grid item xs="auto" style={{ alignSelf: 'center' }}>
+              <Grid item xs="auto">
                 <Link to="/explore" className={classes.link}>
                       Discovery
                 </Link>
               </Grid>
-              <Grid item xs="auto" style={{ alignSelf: 'center' }}>
+              <Grid item xs="auto">
                 <Link to="/games" className={classes.link}>
+                  <Typography color="inherit">
                       My
-                  <br />
+                  </Typography>
+                  <Typography color="inherit">
                       Games
+                  </Typography>
                 </Link>
               </Grid>
               <Grid item xs />
-              <Grid item xs="auto" style={{ alignSelf: 'center' }}>
+              <Grid item xs="auto">
                 <Link to="/user/:id" className={classes.link}>
                   {user.userInfo.name}
                 </Link>

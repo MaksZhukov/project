@@ -21,12 +21,12 @@ class Main extends React.PureComponent {
     const { user } = props;
     if (user.userInfo) {
       return (
-        <React.Fragment>
+        <div className="app-main">
           <NavBar user={props.user} />
           <Switch>
             <Route exact path="(/explore|/)" component={Explore} />
           </Switch>
-        </React.Fragment>
+        </div>
       );
     }
     return null;
