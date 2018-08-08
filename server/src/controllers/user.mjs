@@ -1,9 +1,7 @@
 import passport from 'passport';
 import jwt from 'jsonwebtoken';
 import config from 'config';
-import {
-  createUser, updateUser, sendMail, searchUser,
-} from '../bll/services/user.mjs';
+import userService from '../bll/services/user.mjs';
 import agenda from '../bll/services/scheduler/index.mjs';
 import { encrypt } from '../common/helpers/encryption/index.mjs';
 import app from '../app.mjs';
@@ -11,11 +9,11 @@ import app from '../app.mjs';
 app.post('/api/sign-up/jwt', (req, res) => {
   const dataFromUser = req.body;
   const { mail } = dataFromUser;
-  searchUser({ mail }).then((responseSearch) => {
+  userService.searchUser({ mail }).then((responseSearch) => {
     if (responseSearch.isUser) {
       res.json(responseSearch.client);
     } else {
-      sendMail(mail).then((responseMail) => {
+      userService.sendMail(mail).then((responseMail) => {
         if (responseMail.token) {
           const dataUser = {
             name: dataFromUser.name,
@@ -25,7 +23,7 @@ app.post('/api/sign-up/jwt', (req, res) => {
             token: responseMail.token,
             active: false,
           };
-          createUser(dataUser).then((responseCreate) => {
+          userService.createUser(dataUser).then((responseCreate) => {
             if (!responseCreate) {
               agenda.defineTaskRemoveUser('remove user', { mail: dataFromUser.mail });
               res.json(responseMail.client);
@@ -42,9 +40,9 @@ app.post('/api/sign-up/jwt', (req, res) => {
 
 app.get('/api/sign-up/jwt/callback', (req, res) => {
   const { token } = req.query;
-  searchUser({ token }).then((responseSearch) => {
+  userService.searchUser({ token }).then((responseSearch) => {
     if (responseSearch.isUser) {
-      updateUser({ token }, { active: true }, { token }).then((responseUpdate) => {
+      userService.updateUser({ token }, { active: true }, { token }).then((responseUpdate) => {
         if (!responseUpdate.error) {
           res.redirect(`${config.urlClient}/sign-in`);
         }
@@ -56,16 +54,16 @@ app.get('/api/sign-up/jwt/callback', (req, res) => {
 
 app.post('/api/recovery-pass', (req, res) => {
   const { mail } = req.body;
-  searchUser({ mail }).then((responseSearch) => {
+  userService.searchUser({ mail }).then((responseSearch) => {
     if (!responseSearch.isUser) {
       res.json(responseSearch.client);
     } else {
-      sendMail(mail, {
+      userService.sendMail(mail, {
         subject: config.client.mailRecovery.subject, text: config.client.mailRecovery.text, message: config.client.mailRecovery.message, urlHost: config.urlClient, path: 'pass-change',
       }).then((responseMail) => {
         if (responseMail.token) {
           const { token } = responseMail;
-          updateUser({ mail }, { token }).then((responseUpdate) => {
+          userService.updateUser({ mail }, { token }).then((responseUpdate) => {
             if (responseUpdate.error) {
               res.json(responseUpdate.client);
             } else {
@@ -81,7 +79,7 @@ app.post('/api/recovery-pass', (req, res) => {
 
 app.post('/api/pass-change/token', (req, res) => {
   const { token } = req.body;
-  searchUser({ token }).then((responseSearch) => {
+  userService.searchUser({ token }).then((responseSearch) => {
     if (responseSearch.isUser) {
       res.json({ access: true });
     } else {
@@ -92,9 +90,13 @@ app.post('/api/pass-change/token', (req, res) => {
 
 app.post('/api/pass-change', (req, res) => {
   const { token, pass } = req.body;
-  searchUser({ token }).then((responseSearch) => {
+  userService.searchUser({ token }).then((responseSearch) => {
     if (responseSearch.isUser) {
-      updateUser({ token }, { pass: encrypt(pass) }, { token }, config.client.response.changedPass)
+      userService.updateUser(
+        { token },
+        { pass: encrypt(pass) },
+        { token }, config.client.response.changedPass,
+      )
         .then((responseUpdate) => {
           res.json(responseUpdate.client);
         });
@@ -120,7 +122,7 @@ app.get('/sign-up/facebook/callback',
       token: user.accessToken,
       active: true,
     };
-    createUser(dataUser, 'profileId').then((responseCreate) => {
+    userService.createUser(dataUser, 'profileId').then((responseCreate) => {
       if (!responseCreate) {
         const redirectUri = `${config.urlClient}/?token=${user.accessToken}`;
         res.redirect(redirectUri);
@@ -144,7 +146,7 @@ app.get('/sign-in/facebook/callback',
       token: user.accessToken,
       active: true,
     };
-    createUser(dataUser, 'profileId').then((responseCreate) => {
+    userService.createUser(dataUser, 'profileId').then((responseCreate) => {
       if (!responseCreate) {
         const redirectUri = `${config.urlClient}/sign-up?token=${user.accessToken}`;
         res.redirect(redirectUri);
@@ -154,13 +156,16 @@ app.get('/sign-in/facebook/callback',
 
 app.post('/api/sign-in', (req, res) => {
   const { mail, pass } = req.body;
-  searchUser({ mail, pass: encrypt(pass) }).then((responseSearch) => {
+  userService.searchUser({ mail, pass: encrypt(pass) }).then((responseSearch) => {
     if (responseSearch.isUser) {
       const token = jwt.sign({ mail }, config.jsonWebToken.secret, config.jsonWebToken.expresIn);
-      updateUser({ mail }, { token }, null, config.client.response.signIn)
+      userService.updateUser({ mail }, { token }, null, config.client.response.signIn)
         .then((responseUpdate) => {
           if (responseUpdate.client === config.client.response.signIn) {
-            res.json({ response: responseUpdate.client, userInfo: { ...responseSearch.user, token } });
+            res.json({
+              response: responseUpdate.client,
+              userInfo: { ...responseSearch.user, token },
+            });
           } else {
             res.json(responseUpdate.client);
           }
@@ -173,9 +178,12 @@ app.post('/api/sign-in', (req, res) => {
 
 app.post('/api/check-token', (req, res) => {
   const { token } = req.body;
-  searchUser({ token }).then((responseSearch) => {
+  userService.searchUser({ token }).then((responseSearch) => {
     if (responseSearch.isUser) {
-      res.json({ response: config.client.response.checkToken, userInfo: { ...responseSearch.user, token } });
+      res.json({
+        response: config.client.response.checkToken,
+        userInfo: { ...responseSearch.user, token },
+      });
     }
   });
 });

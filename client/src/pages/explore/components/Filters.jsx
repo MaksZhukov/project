@@ -16,6 +16,7 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Grid from '@material-ui/core/Grid';
 import FormControl from '@material-ui/core/FormControl';
+import { PEGI_RATING, RATING } from '../../../constants';
 
 const styles = theme => ({
   root: {
@@ -49,164 +50,204 @@ const styles = theme => ({
 
 class Filters extends React.PureComponent {
   state = {
-    genre: '',
-    platform: '',
-    gameEngine: '',
-    PEGLRating: '',
-    gameMode: '',
-    rating: {
-      min: 3,
-      max: 5,
+    search: '',
+    filters: {
+      date: null,
+      genre: '',
+      platform: '',
+      gameEngine: '',
+      PEGLRating: '',
+      gameMode: '',
+      rating: RATING,
     },
+    isOpenFilters: false,
   }
 
-  handleChange = name => (event) => {
-    this.setState({
-      [name]: event.target.value,
+  handleChangeFilters = name => (event) => {
+    const { props } = this;
+    const filters = { ...props.filters, [name]: name === 'date' || name === 'rating' ? event : event.target.value };
+    props.changeData({
+      isDefaultFilters: false,
+      filters,
     });
   }
 
+  handleChangeSearch = ({ target }) => {
+    const { props, state } = this;
+    if (!state.isOpenFilters) {
+      props.changeData({ search: target.value });
+      props.resetData(['games']);
+      props.getDataGames({ search: props.search, filters: props.filters });
+    } else {
+      this.setState({ search: target.value });
+    }
+  }
+
+  handleCancel = () => {
+    const { props } = this;
+    this.setState({
+      filters: {
+        date: null,
+        genre: '',
+        platform: '',
+        gameEngine: '',
+        PEGLRating: '',
+        gameMode: '',
+        rating: RATING,
+      },
+      search: '',
+    });
+    props.resetData(['filters', 'search']);
+  }
+
+  handleSearch = () => {
+    const { props, state } = this;
+    props.changeData({ filters: state.filters, search: state.search });
+    props.getDataGames({ search: props.search, filters: props.filters });
+  }
+
+  handleChangePanel = () => {
+    const { state } = this;
+    this.setState({ isOpenFilters: !state.isOpenFilters });
+  }
+
   render() {
-    const { classes } = this.props;
-    return (
-      <React.Fragment>
-        <ExpansionPanel className={classes.root}>
-          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography className={classes.heading}>
-              Filters
-            </Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails className={classes.detailSearch}>
-            <TextField
-              label="Search games"
-              margin="none"
-              className={classes.textField}
-            />
-          </ExpansionPanelDetails>
-          <ExpansionPanelDetails className={classes.detailFilters}>
-            <Grid container alignItems="flex-end">
-              <MuiPickersUtilsProvider utils={MomentUtils}>
-                <DatePicker
-                  onChange={() => { console.log('hello'); }}
-                  animateYearScrolling
-                  format="DD/MM/YYYY"
-                />
-              </MuiPickersUtilsProvider>
+    const { props, state } = this;
+    const {
+      classes, responseGetDataFilters,
+    } = props;
+    const { filters, search } = state;
+    const {
+      gameEngines, genres, gameModes, platforms, loading,
+    } = responseGetDataFilters;
+    if (loading === false) {
+      return (
+        <React.Fragment>
+          <ExpansionPanel className={classes.root} onChange={this.handleChangePanel}>
+            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography className={classes.heading}>
+                Filters
+              </Typography>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails className={classes.detailSearch}>
               <TextField
-                id="select-genres"
-                select
-                value={this.state.genre}
-                onChange={this.handleChange('genre')}
-                label="Genres"
+                label="Search games"
+                margin="none"
                 className={classes.textField}
-              >
-                <MenuItem key={42} value={42}>
-                  {42}
-                </MenuItem>
-                <MenuItem key={43} value={43}>
-                  {43}
-                </MenuItem>
-                <MenuItem key={44} value={44}>
-                  {44}
-                </MenuItem>
-              </TextField>
-              <TextField
-                id="select-platforms"
-                select
-                value={this.state.platform}
-                onChange={this.handleChange('platform')}
-                label="Platforms"
-                className={classes.textField}
-              >
-                <MenuItem key={42} value={42}>
-                  {42}
-                </MenuItem>
-                <MenuItem key={43} value={43}>
-                  {43}
-                </MenuItem>
-                <MenuItem key={44} value={44}>
-                  {44}
-                </MenuItem>
-              </TextField>
-              <TextField
-                id="select-game-engines"
-                select
-                value={this.state.gameEngine}
-                onChange={this.handleChange('gameEngine')}
-                label="Game Engines"
-                className={classes.textField}
-              >
-                <MenuItem key={42} value={42}>
-                  {42}
-                </MenuItem>
-                <MenuItem key={43} value={43}>
-                  {43}
-                </MenuItem>
-                <MenuItem key={44} value={44}>
-                  {44}
-                </MenuItem>
-              </TextField>
-              <TextField
-                id="select-pegl-rating"
-                select
-                value={this.state.PEGLRating}
-                onChange={this.handleChange('PEGLRating')}
-                label="PEGL Rating"
-                className={classes.textField}
-              >
-                <MenuItem key={42} value={42}>
-                  {42}
-                </MenuItem>
-                <MenuItem key={43} value={43}>
-                  {43}
-                </MenuItem>
-                <MenuItem key={44} value={44}>
-                  {44}
-                </MenuItem>
-              </TextField>
-              <TextField
-                id="select-game-modes"
-                select
-                value={this.state.gameMode}
-                onChange={this.handleChange('gameMode')}
-                label="Game Modes"
-                className={classes.textField}
-              >
-                <MenuItem key={42} value={42}>
-                  {42}
-                </MenuItem>
-                <MenuItem key={43} value={43}>
-                  {43}
-                </MenuItem>
-                <MenuItem key={44} value={44}>
-                  {44}
-                </MenuItem>
-              </TextField>
-              <FormControl className={classes.textField}>
-                <Typography align="center" gutterBottom>
-                  Rating
-                </Typography>
-                <InputRange
-                  maxValue={20}
-                  minValue={0}
-                  value={this.state.rating}
-                  onChange={value => this.setState({ rating: value })}
-                  onChangeComplete={value => console.log(value)}
-                />
-              </FormControl>
-            </Grid>
-          </ExpansionPanelDetails>
-          <ExpansionPanelActions>
-            <Button size="small">
-                Cancel
-            </Button>
-            <Button size="small" color="primary">
-                Search
-            </Button>
-          </ExpansionPanelActions>
-        </ExpansionPanel>
-      </React.Fragment>
-    );
+                value={search}
+                onChange={this.handleChangeSearch}
+              />
+            </ExpansionPanelDetails>
+            <ExpansionPanelDetails className={classes.detailFilters}>
+              <Grid container alignItems="flex-end">
+                <MuiPickersUtilsProvider utils={MomentUtils}>
+                  <DatePicker
+                    onChange={this.handleChangeFilters('date')}
+                    animateYearScrolling
+                    format="DD/MM/YYYY"
+                    value={filters.date}
+                    placeholder="Date"
+                  />
+                </MuiPickersUtilsProvider>
+                <TextField
+                  id="select-genres"
+                  select
+                  value={filters.genre}
+                  onChange={this.handleChangeFilters('genre')}
+                  label="Genres"
+                  className={classes.textField}
+                >
+                  {genres.map(option => (
+                    <MenuItem key={option.id} value={option.id}>
+                      {option.name}
+                    </MenuItem>
+                  ))}
+
+                </TextField>
+                <TextField
+                  id="select-platforms"
+                  select
+                  value={filters.platform}
+                  onChange={this.handleChangeFilters('platform')}
+                  label="Platforms"
+                  className={classes.textField}
+                >
+                  {platforms.map(option => (
+                    <MenuItem key={option.id} value={option.id}>
+                      {option.name}
+                    </MenuItem>
+                  ))}
+                </TextField>
+                <TextField
+                  id="select-game-engines"
+                  select
+                  value={filters.gameEngine}
+                  onChange={this.handleChangeFilters('gameEngine')}
+                  label="Game Engines"
+                  className={classes.textField}
+                >
+                  {gameEngines.map(option => (
+                    <MenuItem key={option.id} value={option.id}>
+                      {option.name}
+                    </MenuItem>
+                  ))}
+                </TextField>
+                <TextField
+                  id="select-pegl-rating"
+                  select
+                  value={filters.PEGLRating}
+                  onChange={this.handleChangeFilters('PEGLRating')}
+                  label="PEGL Rating"
+                  className={classes.textField}
+                >
+                  {
+                  PEGI_RATING.map(value => (
+                    <MenuItem key={value} value={value}>
+                      {value}
+                    </MenuItem>
+                  ))
+                }
+                </TextField>
+                <TextField
+                  id="select-game-modes"
+                  select
+                  value={filters.gameMode}
+                  onChange={this.handleChangeFilters('gameMode')}
+                  label="Game Modes"
+                  className={classes.textField}
+                >
+                  {gameModes.map(option => (
+                    <MenuItem key={option.id} value={option.id}>
+                      {option.name}
+                    </MenuItem>
+                  ))}
+                </TextField>
+                <FormControl className={classes.textField}>
+                  <Typography align="center" gutterBottom>
+                    Rating
+                  </Typography>
+                  <InputRange
+                    maxValue={RATING.max}
+                    minValue={RATING.min}
+                    value={filters.rating}
+                    onChange={this.handleChangeFilters('rating')}
+                  />
+                </FormControl>
+              </Grid>
+            </ExpansionPanelDetails>
+            <ExpansionPanelActions>
+              <Button size="small" onClick={this.handleCancel}>
+                  Cancel
+              </Button>
+              <Button size="small" color="primary" onClick={this.handleSearch}>
+                  Search
+              </Button>
+            </ExpansionPanelActions>
+          </ExpansionPanel>
+        </React.Fragment>
+      );
+    }
+    return null;
   }
 }
 

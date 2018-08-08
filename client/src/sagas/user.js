@@ -1,5 +1,5 @@
 import {
-  put, call, takeLatest, all,
+  put, call, takeLatest,
 } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 import { ToastStore } from 'react-toasts';
@@ -42,7 +42,10 @@ function* fetchResponseForgotPass(action) {
 function* fetchResponseCheckTokenChangePass(action) {
   try {
     yield put(checkTokenChangePassLoading({ loading: true }));
-    const responseCheckTokenChangePass = yield call(apiUser.fetchResponseCheckTokenChangePass, action.payload);
+    const responseCheckTokenChangePass = yield call(
+      apiUser.fetchResponseCheckTokenChangePass,
+      action.payload,
+    );
     responseCheckTokenChangePass.loading = false;
     yield put(checkTokenChangePassSuccess(responseCheckTokenChangePass));
   } catch (err) {
@@ -93,16 +96,12 @@ function* fetchResponseCheckToken(action) {
   }
 }
 
-function* watchLastSagas() {
-  yield all([
-    takeLatest(user.FORGOT_PASS_USER.ACTION, fetchResponseForgotPass),
-    takeLatest(user.SIGNUP_USER.ACTION, fetchResponseSignUp),
-    takeLatest(user.СHECK_TOKEN_CHANGE_PASS_USER.ACTION, fetchResponseCheckTokenChangePass),
-    takeLatest(user.CHANGE_PASS_USER.ACTION, fetchResponseChangePass),
-    takeLatest(user.SIGNIN_USER.ACTION, fetchResponseSignIn),
-    takeLatest(user.СHECK_TOKEN_USER.ACTION, fetchResponseCheckToken),
-  ]);
-}
 
-
-export default watchLastSagas;
+export default [
+  takeLatest(user.FORGOT_PASS_USER.ACTION, fetchResponseForgotPass),
+  takeLatest(user.SIGNUP_USER.ACTION, fetchResponseSignUp),
+  takeLatest(user.СHECK_TOKEN_CHANGE_PASS_USER.ACTION, fetchResponseCheckTokenChangePass),
+  takeLatest(user.CHANGE_PASS_USER.ACTION, fetchResponseChangePass),
+  takeLatest(user.SIGNIN_USER.ACTION, fetchResponseSignIn),
+  takeLatest(user.СHECK_TOKEN_USER.ACTION, fetchResponseCheckToken),
+];

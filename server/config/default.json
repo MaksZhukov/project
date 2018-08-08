@@ -78,5 +78,8 @@
   "crypto": {
     "algorithm": "aes192",
     "password": "d6F3Efeq"
+  },
+  "igdb": {
+    "key": "188cd40981c7349288bdb99d2cfaf3bc"
   }
 }

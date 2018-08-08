@@ -30,5 +30,8 @@
     "eslint-plugin-react": "^7.10.0",
     "jest": "^23.4.1",
     "pre-commit": "^1.2.2"
+  },
+  "dependencies": {
+    "igdb-api-node": "^3.1.7"
   }
 }
