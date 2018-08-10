@@ -8,7 +8,11 @@ import AppBar from '@material-ui/core/AppBar';
 
 const styles = ({
   container: {
-    padding: 20,
+    padding: 12,
+  },
+  appBar: {
+    position: 'relative',
+    padding: '8px',
   },
   link: {
     color: '#fff',
@@ -25,7 +29,7 @@ class NavBar extends React.PureComponent {
     if (user.userInfo !== null) {
       return (
         <React.Fragment>
-          <AppBar position="fixed">
+          <AppBar className={classes.appBar}>
             <Grid container spacing={16} alignItems="center" className={classes.container}>
               <Grid item xs="auto">
                 <BrokenImage />

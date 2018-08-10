@@ -10,7 +10,6 @@ app.get('/api/get-data-filters', (req, res) => {
 app.post('/api/get-data-images', (req, res) => {
   const { filters, offset, search } = req.body;
   gameService.getGames(filters, search, offset).then((responseGames) => {
-    console.log(responseGames);
     res.json(responseGames);
   });
 });

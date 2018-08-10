@@ -22,8 +22,8 @@ const styles = theme => ({
   root: {
     width: '100%',
     alignSelf: 'flex-start',
-    marginTop: '75px',
     padding: '10px',
+    zIndex: 1,
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -56,7 +56,7 @@ class Filters extends React.PureComponent {
       genre: '',
       platform: '',
       gameEngine: '',
-      PEGLRating: '',
+      PEGIRating: '',
       gameMode: '',
       rating: RATING,
     },
@@ -64,10 +64,17 @@ class Filters extends React.PureComponent {
   }
 
   handleChangeFilters = name => (event) => {
-    const { props } = this;
-    const filters = { ...props.filters, [name]: name === 'date' || name === 'rating' ? event : event.target.value };
-    props.changeData({
-      isDefaultFilters: false,
+    let value = null;
+    if (name === 'date') {
+      value = event.format();
+    } else if (name === 'rating') {
+      value = event;
+    } else {
+      value = event.target.value;
+    }
+    const { state } = this;
+    const filters = { ...state.filters, [name]: value };
+    this.setState({
       filters,
     });
   }
@@ -75,9 +82,11 @@ class Filters extends React.PureComponent {
   handleChangeSearch = ({ target }) => {
     const { props, state } = this;
     if (!state.isOpenFilters) {
+      this.setState({ search: target.value });
       props.changeData({ search: target.value });
       props.resetData(['games']);
-      props.getDataGames({ search: props.search, filters: props.filters });
+      props.getDataGames({ search: target.value, filters: props.filters });
+      props.resetCacheList();
     } else {
       this.setState({ search: target.value });
     }
@@ -91,7 +100,7 @@ class Filters extends React.PureComponent {
         genre: '',
         platform: '',
         gameEngine: '',
-        PEGLRating: '',
+        PEGIRating: '',
         gameMode: '',
         rating: RATING,
       },
@@ -102,13 +111,17 @@ class Filters extends React.PureComponent {
 
   handleSearch = () => {
     const { props, state } = this;
+    props.resetData(['games']);
     props.changeData({ filters: state.filters, search: state.search });
-    props.getDataGames({ search: props.search, filters: props.filters });
+    props.getDataGames({ search: state.search, filters: state.filters });
+    props.resetCacheList();
   }
 
-  handleChangePanel = () => {
-    const { state } = this;
-    this.setState({ isOpenFilters: !state.isOpenFilters });
+  handleChangePanel = (event, expanded) => {
+    const { props } = this;
+    this.setState({ isOpenFilters: expanded });
+    const expandedPanelHeight = expanded ? 264 : 64;
+    props.UpdateHeightHeaderAndFilter(80 + expandedPanelHeight);
   }
 
   render() {
@@ -193,11 +206,11 @@ class Filters extends React.PureComponent {
                   ))}
                 </TextField>
                 <TextField
-                  id="select-pegl-rating"
+                  id="select-pegi-rating"
                   select
-                  value={filters.PEGLRating}
-                  onChange={this.handleChangeFilters('PEGLRating')}
-                  label="PEGL Rating"
+                  value={filters.PEGIRating}
+                  onChange={this.handleChangeFilters('PEGIRating')}
+                  label="PEGI Rating"
                   className={classes.textField}
                 >
                   {

@@ -65,7 +65,6 @@ class GameService {
     if (filters.PEGIRating) {
       prepareFilters['pegi.rating-eq'] = filters.PEGIRating;
     }
-    console.log(prepareFilters);
     const games = await client.games({
       fields: [
         'name',
