@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon --experimental-modules src/server.mjs"
+    "dev": "nodemon --experimental-modules src/server.mjs",
+    "prod": "set NODE_ENV=production && node --experimental-modules src/server.mjs"
   },
   "author": "Max Zhukov",
   "license": "ISC",

@@ -5,15 +5,15 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --mode development --open --hot",
-    "prod": "webpack --mode production"
+    "prod": "set NODE_ENV=production && webpack --mode production"
   },
-  "proxy": "http://localhost:3000",
   "author": "Maks Zhukov",
   "license": "ISC",
   "dependencies": {
     "@material-ui/core": "^1.4.2",
     "@material-ui/icons": "^2.0.0",
     "classnames": "^2.2.6",
+    "config": "^2.0.1",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "history": "^4.7.2",
     "material-ui-pickers": "^1.0.0-rc.12",
