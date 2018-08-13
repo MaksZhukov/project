@@ -7,7 +7,6 @@
     "dev": "webpack-dev-server --mode development --open --hot",
     "prod": "webpack --mode production"
   },
-  "proxy": "http://localhost:3000",
   "author": "Maks Zhukov",
   "license": "ISC",
   "dependencies": {
