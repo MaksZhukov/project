@@ -4,6 +4,7 @@
   "portServer": "3000",
   "dataBase": {
     "name": "react_video_games",
+    "url": "mongodb://localhost:27017",
     "collections": {
       "users": "users"
     }
