@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
-import SignUp from '../components/signUp/SignUp';
-import { signUp } from '../actions/user';
-
+import SignUp from '../components/SignUp';
+import { signUp, checkToken } from '../../../actions/user';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -9,6 +8,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   signUp: dataFromUser => dispatch(signUp(dataFromUser)),
+  checkToken: token => dispatch(checkToken(token)),
 });
-
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

@@ -1,3 +1,4 @@
 import user from './user';
+import game from './game';
 
-export default user;
+export default { user, game };
