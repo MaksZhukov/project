@@ -1,9 +1,12 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const config = require('config');
 
 const htmlWebpackPlugin = new HtmlWebPackPlugin({
   template: './src/index.html',
   filename: './index.html',
 });
+const configWebpack = new webpack.DefinePlugin({ config: JSON.stringify(config) });
 
 module.exports = {
   entry: './src/index.jsx',
@@ -45,5 +48,5 @@ module.exports = {
   resolve: {
     extensions: ['.wasm', '.mjs', '.js', '.json', '.jsx'],
   },
-  plugins: [htmlWebpackPlugin],
+  plugins: [htmlWebpackPlugin, configWebpack],
 };
