@@ -51,40 +51,49 @@ class SignUp extends React.PureComponent {
                   to="/sign-in"
                   className="btn text-uppercase link-sign-in"
                 >
+
                 sign in
-                </Link>
+</Link>
                 <Link to="/sign-up" className="btn btn-active text-uppercase link-sign-up">
-              join us!
-                </Link>
+
+                join us!
+</Link>
               </div>
               <div className="form-group">
                 <label htmlFor="form-sign-up-name" className="form-sign-up-label-name">
-              Name
-                  <input id="form-sign-up-name" required name="name" type="text" className="form-sign-up-name form-control" value={name} onInput={this.handlerInput} />
+
+                Name
+<input id="form-sign-up-name" required name="name" type="text" className="form-sign-up-name form-control" value={name} onInput={this.handlerInput} />
                 </label>
               </div>
               <div className="form-group">
                 <label htmlFor="form-sign-up-mail" className="form-sign-up-label-mail">
+
               Email Address
-                  <input id="form-sign-up-mail" required type="email" name="mail" className="form-sign-up-mail form-control" value={mail} onInput={this.handlerInput} />
+<input id="form-sign-up-mail" required type="email" name="mail" className="form-sign-up-mail form-control" value={mail} onInput={this.handlerInput} />
                 </label>
               </div>
               <div className="form-group">
                 <label htmlFor="form-sign-up-pass" className="form-sign-up-label-pass">
+
+
               Password
-                  <input id="form-sign-up-pass" required type="password" name="pass" className="form-sign-up-pass form-control" value={pass} onInput={this.handlerInput} />
+<input id="form-sign-up-pass" required type="password" name="pass" className="form-sign-up-pass form-control" value={pass} onInput={this.handlerInput} />
                 </label>
               </div>
               <div className="form-group">
                 <input type="submit" className="form-sign-up-submit btn btn-orange" value="Join Now" />
               </div>
               <div className="form-sign-up-with-title text-dashed-lines">
+
+
             Register With
-              </div>
+</div>
               <div className="form-group mb-none">
-                <a href="http://localhost:3000/sign-up/facebook" className="form-sign-up-facebook btn btn-blue">
-              Facebook
-                </a>
+                <a href={config.signUpFacebookUrl} className="form-sign-up-facebook btn btn-blue">
+
+                    Facebook
+</a>
               </div>
               <div className={classNames({ loader: true, 'loader-active': loading })}>
                 <FadeLoader

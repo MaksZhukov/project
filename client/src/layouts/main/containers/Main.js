@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
+import { withRouter } from 'react-router-dom';
 import Main from '../components/Main';
 import { checkToken } from '../../../actions/user';
 
@@ -13,4 +14,4 @@ const mapDispatchToProps = dispatch => ({
   push: path => dispatch(push(path)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
