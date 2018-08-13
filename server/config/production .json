@@ -4,7 +4,7 @@
   "portServer": "3000",
   "passport": {
     "facebook": {
-      "callbackURL": "https://pacific-ridge-40399.herokuapp.com:3000/sign-up/facebook/callback",
+      "callbackURL": "https://pacific-ridge-40399.herokuapp.com:3000/sign-up/facebook/callback"
     }
   }
 }
