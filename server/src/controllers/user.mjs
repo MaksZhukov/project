@@ -171,7 +171,7 @@ app.post('/api/sign-in', (req, res) => {
           }
         });
     } else {
-      res.json(responseSearch.client);
+      res.json({ response: responseSearch.client });
     }
   });
 });

@@ -9,6 +9,7 @@ class Main extends React.PureComponent {
     const { props } = this;
     const token = localStorage.getItem('token') || queryString.parse(window.location.search).token;
     if (token) {
+      localStorage.setItem('token', token);
       props.checkToken(token);
     } else {
       props.push('/sign-in');
