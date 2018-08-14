@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --experimental-modules src/server.mjs",
-    "prod": "cross-env exec NODE_ENV=production && node --experimental-modules src/server.mjs"
+    "prod": "cross-env NODE_ENV=production && node --experimental-modules src/server.mjs"
   },
   "author": "Max Zhukov",
   "license": "ISC",
