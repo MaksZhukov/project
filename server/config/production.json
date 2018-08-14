@@ -1,7 +1,7 @@
 {
-  "urlClient": "https://pacific-ridge-40399.herokuapp.com:300",
-  "urlServer": "https://pacific-ridge-40399.herokuapp.com:300",
-  "portServer": "300",
+  "urlClient": "https://pacific-ridge-40399.herokuapp.com:3001",
+  "urlServer": "https://pacific-ridge-40399.herokuapp.com:3000",
+  "portServer": "3000",
   "dataBase": {
     "url": "mongodb://admin:maks_zhukov_97@ds213759.mlab.com:13759"
   },
