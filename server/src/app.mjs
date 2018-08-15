@@ -1,5 +1,4 @@
 import express from 'express';
-import cors from 'cors';
 import bodyParser from 'body-parser';
 import config from 'config';
 import agenda from './bll/services/scheduler/index.mjs';
@@ -12,7 +11,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cors({ origin: '*' }));
 
 
 app.listen(process.env.PORT || config.portServer, () => {
