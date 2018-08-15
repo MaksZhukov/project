@@ -7,12 +7,14 @@ mongoose.connect(`${config.dataBase.url}/${config.dataBase.name}`, { useNewUrlPa
     logger.error(error);
   } else {
     logger.info(`connected to mongodb on database ${config.dataBase.name}`);
-    mongoose.connect(`${config.dataBase.url}/${config.dataBase.name}`, { useNewUrlParser: true }, (err) => {
-      if (error) {
-        logger.error(err);
-      } else {
-        logger.info(`connected to mongodb on database ${config.dataBase.name}`);
-      }
-    });
+    setTimeout(() => {
+      mongoose.connect(`${config.dataBase.url}/${config.dataBase.name}`, { useNewUrlParser: true }, (err) => {
+        if (error) {
+          logger.error(err);
+        } else {
+          logger.info(`connected to mongodb on database ${config.dataBase.name}`);
+        }
+      });
+    }, 1000);
   }
 });
