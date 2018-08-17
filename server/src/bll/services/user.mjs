@@ -16,7 +16,7 @@ class UserService {
         response = {
           client: config.client.response.registeredUser,
           isUser: true,
-          user: { name: user.name },
+          user: { name: user.name, id: user.id },
         };
       }
       if (user && user.active && searchData.pass) {

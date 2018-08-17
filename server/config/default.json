@@ -6,7 +6,8 @@
     "name": "react_video_games",
     "url": "mongodb://localhost:27017",
     "collections": {
-      "users": "users"
+      "users": "users",
+      "userGames": "user_games"
     }
   },
   "client":{
@@ -53,6 +54,18 @@
       "checkToken": {
         "status": "success",
         "message": "token is valid"
+      },
+      "addFavorite": {
+        "status": "success",
+        "message": "favorite game was added"
+      },
+      "removeFavorite": {
+        "status": "success",
+        "message": "favorite game was added"
+      },
+      "getMyGames": {
+        "status": "success",
+        "message": "user's games were received"
       }
     }
   },
