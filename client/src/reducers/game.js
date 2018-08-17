@@ -2,7 +2,7 @@ import { handleActions } from 'redux-actions';
 import {
   getDataFiltersError, getDataFiltersSuccess, getDataFiltersLoading,
   getDataGamesError, getDataGamesSuccess, getDataGamesLoading,
-  changeData, resetData,
+  changeData, resetData, changeGameFavorite,
 } from '../actions/game';
 import { RATING } from '../constants';
 
@@ -53,6 +53,16 @@ const reducer = handleActions({
       newState[element] = defaultState[element];
     });
     return { ...state, ...newState };
+  },
+  [changeGameFavorite](state, { payload: gameId }) {
+    const games = state.games.map((gameInfo) => {
+      const game = { ...gameInfo };
+      if (game.id === gameId) {
+        game.favorite = !game.favorite;
+      }
+      return game;
+    });
+    return { ...state, games };
   },
 },
 defaultState);

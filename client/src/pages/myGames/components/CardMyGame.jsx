@@ -2,41 +2,37 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import Avatar from '@material-ui/core/Avatar';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import red from '@material-ui/core/colors/red';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import CloudUpload from '@material-ui/icons/CloudUpload';
 import ShareIcon from '@material-ui/icons/Share';
-import moment from 'moment';
+import Dropzone from 'react-dropzone';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
 import { NO_CONTENT_API_GAME } from '../../../constants';
 
-const styles = theme => ({
+const styles = () => ({
   card: {
     maxWidth: 400,
   },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
+  dropZone: {
+    display: 'flex',
+    marginTop: '20px',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100px',
+    border: '2px dashed gray',
+    borderRadius: '10px',
   },
-  expand: {
-    marginLeft: 'auto',
-    [theme.breakpoints.up('sm')]: {
-      marginRight: -8,
-    },
-  },
-  avatar: {
-    backgroundColor: red[500],
-  },
-  avatarNoRating: {
-    backgroundColor: NO_CONTENT_API_GAME.rating[500],
+  CloudUpload: {
+    fontSize: '40px',
   },
 });
 
-class CardGame extends React.PureComponent {
+class CardMyGame extends React.PureComponent {
   clickFavorite = () => {
     const { props } = this;
     if (props.gameInfo.favorite) {
@@ -46,6 +42,14 @@ class CardGame extends React.PureComponent {
     }
   }
 
+  handleDrop = (files) => {
+    const { props } = this;
+    const dataFile = new FormData();
+    dataFile.append('file', files[0]);
+    props.addImages({ gameId: props.gameInfo.id, userId: props.userId, file: dataFile });
+  }
+
+
   render() {
     const { props } = this;
     const { classes, gameInfo } = props;
@@ -53,23 +57,22 @@ class CardGame extends React.PureComponent {
       <React.Fragment>
         <Card className={classes.card}>
           <CardHeader
-            avatar={(
-              <Avatar aria-label="Recipe" className={gameInfo.rating ? classes.avatar : classes.avatarNoRating}>
-                {gameInfo.rating ? +gameInfo.rating.toFixed(1) : null}
-              </Avatar>
-              )}
-            title={gameInfo.name}
-            subheader={gameInfo.date ? moment(gameInfo.date).format('YYYY MMMM DD') : NO_CONTENT_API_GAME.date}
-          />
-          <CardMedia
-            className={classes.media}
-            image={gameInfo.image ? gameInfo.image.url : NO_CONTENT_API_GAME.image}
             title={gameInfo.name}
           />
           <CardContent>
             <Typography>
               {gameInfo.summary ? gameInfo.summary : NO_CONTENT_API_GAME.summary}
             </Typography>
+            <Dropzone accept="image/jpeg, image/png" onDrop={this.handleDrop} className={classes.dropZone}>
+              <CloudUpload className={classes.CloudUpload} />
+            </Dropzone>
+            {/* <GridList cellHeight={160} className={classes.gridList} cols={3}>
+              {tileData.map(tile => (
+                <GridListTile key={tile.img} cols={tile.cols || 1}>
+                  <img src={tile.img} alt={tile.title} />
+                </GridListTile>
+              ))}
+            </GridList> */}
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>
             <IconButton aria-label="Add to favorites" color={gameInfo.favorite ? 'secondary' : 'default'} onClick={this.clickFavorite}>
@@ -85,4 +88,4 @@ class CardGame extends React.PureComponent {
   }
 }
 
-export default withStyles(styles)(CardGame);
+export default withStyles(styles)(CardMyGame);
