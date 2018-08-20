@@ -20,7 +20,7 @@ const styles = () => ({
   },
   dropZone: {
     display: 'flex',
-    marginTop: '20px',
+    margin: '20px 0',
     alignItems: 'center',
     justifyContent: 'center',
     height: '100px',
@@ -29,6 +29,13 @@ const styles = () => ({
   },
   CloudUpload: {
     fontSize: '40px',
+  },
+  gridList: {
+    height: 450,
+  },
+  gridImage: {
+    'max-width': '100%',
+    height: 'auto',
   },
 });
 
@@ -44,9 +51,13 @@ class CardMyGame extends React.PureComponent {
 
   handleDrop = (files) => {
     const { props } = this;
-    const dataFile = new FormData();
-    dataFile.append('file', files[0]);
-    props.addImages({ gameId: props.gameInfo.id, userId: props.userId, file: dataFile });
+    const formDataFiles = new FormData();
+    formDataFiles.append('gameId', props.gameInfo.id);
+    formDataFiles.append('userId', props.userId);
+    files.forEach((file, index) => {
+      formDataFiles.append(`file${index}`, file);
+    });
+    props.addImages(formDataFiles);
   }
 
 
@@ -66,13 +77,16 @@ class CardMyGame extends React.PureComponent {
             <Dropzone accept="image/jpeg, image/png" onDrop={this.handleDrop} className={classes.dropZone}>
               <CloudUpload className={classes.CloudUpload} />
             </Dropzone>
-            {/* <GridList cellHeight={160} className={classes.gridList} cols={3}>
-              {tileData.map(tile => (
-                <GridListTile key={tile.img} cols={tile.cols || 1}>
-                  <img src={tile.img} alt={tile.title} />
-                </GridListTile>
-              ))}
-            </GridList> */}
+            {gameInfo.photos.length
+              ? (
+                <GridList cellHeight="auto" className={classes.gridList} cols={2}>
+                  {gameInfo.photos.map((url, index) => (
+                    <GridListTile key={url} cols={index % 3 === 0 ? 2 : 1}>
+                      <img src={url} alt={`img${index}`} className={classes.gridImage} />
+                    </GridListTile>
+                  ))}
+                </GridList>
+              ) : null}
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>
             <IconButton aria-label="Add to favorites" color={gameInfo.favorite ? 'secondary' : 'default'} onClick={this.clickFavorite}>

@@ -23,9 +23,9 @@ app.post('/api/get-my-games', (req, res) => {
 });
 
 app.post('/api/add-images', (req, res) => {
-  const { file, userId, gameId } = req.body;
-  console.log(req.body);
-  myGamesService.addImages({ userId, gameId, file }).then((responsAddImages) => {
-
+  const { userId, gameId } = req.body;
+  const { files } = req;
+  myGamesService.addImages({ userId, gameId: Number(gameId), files }).then((responsAddImages) => {
+    res.json(responsAddImages.client);
   });
 });

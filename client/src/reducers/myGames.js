@@ -47,11 +47,12 @@ const reducer = handleActions({
     return { ...state, responseGetMyGames };
   },
   [addImagesSuccess](state, { payload: responseAddImages }) {
-    const { photos } = responseAddImages;
+    const { urls, gameId } = responseAddImages;
+
     const games = state.games.map((gameInfo) => {
       const game = { ...gameInfo };
-      if (responseAddImages.gameId === game.id) {
-        game.photos = photos;
+      if (gameId === game.id) {
+        game.photos.push(...urls);
       }
       return game;
     });

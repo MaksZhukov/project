@@ -66,6 +66,10 @@
       "getMyGames": {
         "status": "success",
         "message": "user's games were received"
+      },
+      "addImages": {
+        "status": "success",
+        "message": "images were added"
       }
     }
   },
@@ -86,7 +90,7 @@
     "port": "587",
     "auth": {
       "user": "malabar7778892@gmail.com",
-      "pass": "ytngfhjkz199719971997"
+      "pass": "fraer7778892"
     }
   },
   "crypto": {
@@ -94,6 +98,6 @@
     "password": "d6F3Efeq"
   },
   "igdb": {
-    "key": "6c004db05d7d16b7ff7aad10461d03d5"
+    "key": "6895241339143d83eb5ed616971cf9d9"
   }
 }

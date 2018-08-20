@@ -1587,3 +1587,665 @@
 {"message":"Listening on port 3000","level":"info","timestamp":"2018-08-17T15:13:09.713Z"}
 {"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-17T15:13:10.748Z"}
 {"message":"agenda launched","level":"info","timestamp":"2018-08-17T15:13:10.777Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:21:07.913Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:21:08.958Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:21:08.979Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:29:08.119Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:29:09.173Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:29:09.179Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:29:11.370Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:29:12.409Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:29:12.435Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:30:39.728Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:30:40.758Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:30:40.759Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:30:46.974Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:30:48.006Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:30:48.011Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:31:01.900Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:31:02.916Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:31:02.924Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:31:19.303Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:31:20.319Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:31:20.327Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:32:27.094Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:32:28.180Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:32:28.202Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:32:52.647Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:32:53.698Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:32:53.711Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:35:25.385Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:35:26.432Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:35:26.456Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:37:54.429Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:37:55.474Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:37:55.496Z"}
+{"code":"EAUTH","response":"535-5.7.8 Username and Password not accepted. Learn more at\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials j26-v6sm1479054lji.78 - gsmtp","responseCode":535,"command":"AUTH PLAIN","level":"error","timestamp":"2018-08-20T07:45:50.998Z"}
+{"code":"EAUTH","response":"535-5.7.8 Username and Password not accepted. Learn more at\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials i2-v6sm1007945lfa.78 - gsmtp","responseCode":535,"command":"AUTH PLAIN","level":"error","timestamp":"2018-08-20T07:46:19.193Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:47:30.380Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:47:31.414Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:47:31.432Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:47:38.378Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:47:39.417Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:47:39.432Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:47:51.935Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:47:54.678Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:47:55.724Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:47:55.748Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:48:00.289Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:48:01.312Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:48:01.322Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:48:08.804Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:48:09.873Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:48:09.875Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:48:15.256Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:48:16.301Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:48:16.322Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:48:20.521Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:48:21.576Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:48:21.581Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:48:32.645Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:48:33.703Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:48:33.724Z"}
+{"code":"EAUTH","response":"535-5.7.8 Username and Password not accepted. Learn more at\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials o11-v6sm1662739lfl.1 - gsmtp","responseCode":535,"command":"AUTH PLAIN","level":"error","timestamp":"2018-08-20T07:48:35.231Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:48:57.384Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:48:58.441Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:48:58.443Z"}
+{"code":"EAUTH","response":"535-5.7.8 Username and Password not accepted. Learn more at\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials j86-v6sm1634536lfk.70 - gsmtp","responseCode":535,"command":"AUTH PLAIN","level":"error","timestamp":"2018-08-20T07:48:59.901Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:49:10.895Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:49:11.913Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:49:11.933Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:49:14.376Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:49:15.425Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:49:15.426Z"}
+{"code":"EAUTH","response":"535-5.7.8 Username and Password not accepted. Learn more at\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials s202-v6sm941014lfs.28 - gsmtp","responseCode":535,"command":"AUTH PLAIN","level":"error","timestamp":"2018-08-20T07:49:18.931Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:49:25.278Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:49:26.359Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:49:26.361Z"}
+{"code":"EAUTH","response":"535-5.7.8 Username and Password not accepted. Learn more at\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials j140-v6sm1645706lfg.16 - gsmtp","responseCode":535,"command":"AUTH PLAIN","level":"error","timestamp":"2018-08-20T07:50:42.218Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:50:58.575Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:50:59.677Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:50:59.692Z"}
+{"code":"EAUTH","response":"535-5.7.8 Username and Password not accepted. Learn more at\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials g133-v6sm1631850lfg.81 - gsmtp","responseCode":535,"command":"AUTH PLAIN","level":"error","timestamp":"2018-08-20T07:51:01.272Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:51:10.229Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:51:11.258Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:51:11.266Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:52:16.438Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:52:17.459Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:52:17.476Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:52:32.370Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:52:33.413Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:52:33.423Z"}
+{"code":"EAUTH","response":"535-5.7.8 Username and Password not accepted. Learn more at\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials l14-v6sm1472961ljh.91 - gsmtp","responseCode":535,"command":"AUTH PLAIN","level":"error","timestamp":"2018-08-20T07:52:35.272Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:52:48.884Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:52:49.950Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:52:49.957Z"}
+{"code":"EAUTH","response":"535-5.7.8 Username and Password not accepted. Learn more at\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials j26-v6sm1492662ljc.54 - gsmtp","responseCode":535,"command":"AUTH PLAIN","level":"error","timestamp":"2018-08-20T07:53:17.443Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T07:53:54.507Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T07:53:55.589Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T07:53:55.597Z"}
+{"message":{"accepted":["maks_zhukov_97@mail.ru"],"rejected":[],"envelopeTime":687,"messageTime":859,"messageSize":560,"response":"250 2.0.0 OK 1534751658 101-v6sm1048261lfs.44 - gsmtp","envelope":{"from":"videogames@gmail.com","to":["maks_zhukov_97@mail.ru"]},"messageId":"<c81b6072-6671-a96b-71f1-8e3d04742256@gmail.com>"},"level":"info","timestamp":"2018-08-20T07:54:18.992Z"}
+{"message":"remove user maks_zhukov_97@mail.ru","level":"info","timestamp":"2018-08-20T07:54:22.650Z"}
+{"message":{"accepted":["maks_zhukov_97@mail.ru"],"rejected":[],"envelopeTime":270,"messageTime":729,"messageSize":560,"response":"250 2.0.0 OK 1534751761 g16-v6sm1490722lje.1 - gsmtp","envelope":{"from":"videogames@gmail.com","to":["maks_zhukov_97@mail.ru"]},"messageId":"<8abd87e7-5421-682a-55be-c35e43fda103@gmail.com>"},"level":"info","timestamp":"2018-08-20T07:56:01.402Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:00:28.119Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:00:29.159Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:00:29.180Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:04:19.041Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:04:20.078Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:04:20.101Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:04:34.951Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:04:35.990Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:04:36.004Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:04:45.781Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:04:46.817Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:04:46.845Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:04:49.754Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:04:50.788Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:04:50.790Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:04:54.095Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:04:57.123Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:04:58.147Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:04:58.158Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:05:05.494Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:05:06.525Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:05:06.527Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:06:01.712Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:06:02.742Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:06:02.743Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:07:17.904Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:07:18.928Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:07:18.934Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:07:27.459Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:07:28.483Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:07:28.496Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:08:05.933Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:08:06.955Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:08:06.973Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:08:12.541Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:08:13.559Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:08:13.575Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:08:29.089Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:08:30.155Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:08:30.164Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:08:46.656Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:08:47.696Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:08:47.707Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:10:11.043Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:10:12.068Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:10:12.068Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:10:25.619Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:10:26.646Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:10:26.659Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:10:32.337Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:10:33.407Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:10:33.412Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:12:06.952Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:12:08.014Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:12:08.023Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:12:59.552Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:13:02.769Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:13:03.792Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:13:03.802Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:13:25.434Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:13:26.485Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:13:26.486Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:13:38.335Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:13:39.391Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:13:39.400Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:13:56.208Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:13:57.265Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:13:57.266Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:15:52.839Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:15:53.857Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:15:53.865Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:16:08.182Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:16:09.201Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:16:09.214Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:18:52.084Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:18:53.144Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:18:53.148Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:19:18.118Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:19:19.153Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:19:19.167Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:19:37.687Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:19:38.744Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:19:38.754Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:20:27.294Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:20:28.352Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:20:28.361Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:20:36.676Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:20:37.725Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:20:37.746Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:20:41.482Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:20:42.529Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:20:42.551Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:21:08.429Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:21:09.480Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:21:09.481Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:21:56.234Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:21:57.298Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:21:57.308Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:22:20.778Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:22:23.257Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:22:24.318Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:22:24.319Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:22:45.718Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:22:46.789Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:22:46.812Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:22:52.782Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:22:53.829Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:22:53.830Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:23:19.731Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:23:20.757Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:23:20.758Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:24:24.617Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:24:25.672Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:24:25.687Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:25:14.062Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:25:15.081Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:25:15.094Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:25:30.352Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:25:31.412Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:25:31.421Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:26:08.171Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:26:09.218Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:26:09.219Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:26:16.077Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:26:17.096Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:26:17.103Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:27:02.982Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:27:04.041Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:27:04.063Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:27:23.843Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:27:24.927Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:27:24.937Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:27:34.666Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:27:39.419Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:27:40.498Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:27:40.500Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:27:50.280Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:27:52.967Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:27:53.997Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:27:54.005Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:28:00.095Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:28:01.118Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:28:01.128Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:28:04.560Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:28:05.595Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:28:05.618Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:28:14.195Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:28:17.164Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:28:18.278Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:28:18.295Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:28:22.603Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:28:23.630Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:28:23.636Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:28:38.467Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:28:39.519Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:28:39.526Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:28:57.981Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:28:59.003Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:28:59.011Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:29:03.902Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:29:04.951Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:29:04.970Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:29:09.365Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:29:10.403Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:29:10.426Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:29:17.273Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:29:18.333Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:29:18.356Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:29:40.066Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:29:41.094Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:29:41.095Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:29:45.844Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:29:46.882Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:29:46.905Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:29:54.869Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:29:55.919Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:29:55.936Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:30:24.648Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:30:25.694Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:30:25.695Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:30:41.796Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:30:42.844Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:30:42.856Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:31:12.138Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:31:13.162Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:31:13.180Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:31:42.078Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:31:43.093Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:31:43.105Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:31:51.347Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:31:52.414Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:31:52.423Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:31:59.358Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:32:00.385Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:32:00.398Z"}
+{"message":"Empty file","http_code":400,"level":"error","timestamp":"2018-08-20T08:32:02.650Z"}
+{"message":"Empty file","http_code":400,"level":"error","timestamp":"2018-08-20T08:32:02.659Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:32:20.248Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:32:21.273Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:32:21.286Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:32:25.257Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:32:26.322Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:32:26.328Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:32:32.930Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:32:33.959Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:32:33.975Z"}
+{"message":"Empty file","http_code":400,"level":"error","timestamp":"2018-08-20T08:32:37.789Z"}
+{"message":"Empty file","http_code":400,"level":"error","timestamp":"2018-08-20T08:32:37.871Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:32:45.782Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:32:46.832Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:32:46.846Z"}
+{"message":"Empty file","http_code":400,"level":"error","timestamp":"2018-08-20T08:32:50.518Z"}
+{"message":"Empty file","http_code":400,"level":"error","timestamp":"2018-08-20T08:32:50.522Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:32:59.770Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:33:00.845Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:33:00.851Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:33:03.253Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:33:04.293Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:33:04.312Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:33:10.432Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:33:11.485Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:33:11.499Z"}
+{"message":"Empty file","http_code":400,"level":"error","timestamp":"2018-08-20T08:33:17.743Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:33:27.458Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:33:28.512Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:33:28.534Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:33:49.993Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:33:51.042Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:33:51.047Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:33:56.172Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:33:57.228Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:33:57.229Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:34:08.253Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:34:09.301Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:34:09.325Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:34:14.205Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:34:15.237Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:34:15.243Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:34:45.407Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:34:46.451Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:34:46.460Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:35:29.466Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:35:30.529Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:35:30.538Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:35:37.040Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:35:38.071Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:35:38.078Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:36:08.778Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:36:09.845Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:36:09.846Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:37:25.177Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:37:28.012Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:37:29.060Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:37:29.067Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:37:31.554Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:37:32.612Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:37:32.625Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:37:48.501Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:37:49.560Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:37:49.569Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:38:35.916Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:38:36.955Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:38:36.974Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:39:00.788Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:39:01.848Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:39:01.849Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:39:07.985Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:39:09.041Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:39:09.045Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:39:22.559Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:39:23.593Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:39:23.613Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:39:28.846Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:39:29.901Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:39:29.926Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:40:02.877Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:40:03.929Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:40:03.938Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:40:13.596Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:40:14.634Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:40:14.662Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:40:37.751Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:40:38.780Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:40:38.793Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:40:42.209Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:40:43.271Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:40:43.277Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:40:59.282Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:41:00.341Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:41:00.342Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:41:02.714Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:41:03.759Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:41:03.760Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:41:08.783Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:41:09.845Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:41:09.846Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:41:19.526Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:41:20.571Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:41:20.591Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:41:29.898Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:41:30.944Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:41:30.967Z"}
+{"message":"Empty file","http_code":400,"level":"error","timestamp":"2018-08-20T08:41:39.089Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:41:55.320Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:41:56.377Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:41:56.382Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:42:31.863Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:42:32.899Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:42:32.922Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:42:40.448Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:42:41.502Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:42:41.526Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:44:14.171Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:44:15.221Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:44:15.237Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:44:18.236Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:44:19.291Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:44:19.300Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:55:28.643Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:55:29.704Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:55:29.726Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:55:46.363Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:55:47.423Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:55:47.424Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:55:56.905Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:55:57.975Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:55:57.996Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:56:07.211Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:56:10.809Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:56:12.067Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:56:12.089Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:57:07.625Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:57:08.682Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:57:08.692Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:57:32.831Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:57:33.885Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:57:33.894Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:57:41.122Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:57:42.182Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:57:42.183Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:57:47.953Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:57:49.035Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:57:49.044Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:58:03.375Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:58:04.414Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:58:04.435Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:58:12.144Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:58:13.207Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:58:13.216Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:58:25.797Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:58:26.848Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:58:26.864Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:58:30.742Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:58:31.813Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:58:31.814Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:58:37.201Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:58:38.230Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:58:38.239Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:58:45.171Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:58:46.206Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:58:46.212Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:58:49.096Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:58:50.123Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:58:50.137Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:59:34.639Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:59:35.688Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:59:35.689Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:59:38.903Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:59:39.925Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:59:39.941Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:59:44.404Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:59:45.435Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:59:45.443Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:59:48.793Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T08:59:51.400Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T08:59:52.424Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T08:59:52.432Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:00:03.533Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:00:04.559Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:00:04.570Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:00:21.233Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:00:22.278Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:00:22.289Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:00:25.237Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:00:26.276Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:00:26.284Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:01:13.126Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:01:14.194Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:01:14.195Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:01:21.569Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:01:22.624Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:01:22.648Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:01:39.279Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:01:40.343Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:01:40.351Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:01:44.301Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:01:45.363Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:01:45.386Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:02:52.798Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:02:53.814Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:02:53.825Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:02:56.937Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:02:57.955Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:02:57.973Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:03:32.518Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:03:33.553Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:03:33.568Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:03:55.090Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:03:56.161Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:03:56.163Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:04:04.679Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:04:05.721Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:04:05.723Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:04:08.866Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:04:09.906Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:04:09.928Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:04:35.149Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:04:36.207Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:04:36.212Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:04:40.015Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:04:41.067Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:04:41.094Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:05:49.916Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:05:50.962Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:05:50.975Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:06:48.609Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:06:49.665Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:06:49.674Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:07:10.000Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:07:11.056Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:07:11.066Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:07:22.131Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:07:23.154Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:07:23.168Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:07:41.810Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:07:42.857Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:07:42.881Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:07:53.446Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:07:54.543Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:07:54.544Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:07:57.011Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:07:58.100Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:07:58.109Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:08:02.924Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:08:03.984Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:08:03.990Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:08:11.000Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:08:12.040Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:08:12.045Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:08:20.605Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:08:21.674Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:08:21.685Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:08:54.083Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:08:55.157Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:08:55.170Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:10:06.618Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:10:07.664Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:10:07.683Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:10:35.956Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:10:36.974Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:10:36.989Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:10:52.689Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:10:53.745Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:10:53.754Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:10:57.947Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:10:58.986Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:10:58.991Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:11:29.025Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:11:30.067Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:11:30.074Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:11:41.346Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:11:42.409Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:11:42.417Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:12:24.423Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:12:25.451Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:12:25.453Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:12:30.560Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:12:31.579Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:12:31.587Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:12:34.839Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:12:35.912Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:12:35.922Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:12:53.174Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:12:54.254Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:12:54.263Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:13:02.228Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:13:03.271Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:13:03.277Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:13:45.647Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:13:46.708Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:13:46.714Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:13:51.806Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:13:52.855Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:13:52.877Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:14:11.986Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:14:13.069Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:14:13.076Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:14:18.391Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:14:19.453Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:14:19.471Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:14:34.379Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:14:35.411Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:14:35.412Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:14:56.544Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:14:57.601Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:14:57.602Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:15:01.729Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:15:02.769Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:15:02.788Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:15:10.797Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:15:11.873Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:15:11.884Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:15:14.162Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:15:15.194Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:15:15.195Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:15:19.199Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:15:20.228Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:15:20.229Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:15:46.654Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:15:47.714Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:15:47.722Z"}
+{"message":"HTTP Status 429 - https://api-endpoint.igdb.com/games/51486?fields=name,summary&limit=8","level":"error","timestamp":"2018-08-20T09:33:21.359Z"}
+{"message":"HTTP Status 429 - https://api-endpoint.igdb.com/games/51486?fields=name,summary&limit=8","level":"error","timestamp":"2018-08-20T09:33:40.171Z"}
+{"message":"HTTP Status 429 - https://api-endpoint.igdb.com/games/51486?fields=name,summary&limit=8","level":"error","timestamp":"2018-08-20T09:34:59.484Z"}
+{"level":"error","timestamp":"2018-08-20T09:35:07.061Z"}
+{"level":"error","timestamp":"2018-08-20T09:35:07.075Z"}
+{"level":"error","timestamp":"2018-08-20T09:35:07.079Z"}
+{"level":"error","timestamp":"2018-08-20T09:35:07.141Z"}
+{"message":"HTTP Status 429 - https://api-endpoint.igdb.com/games/?fields=name,rating,summary,first_release_date,cover&limit=8&offset=0&filter[rating][gte]=0&filter[rating][lte]=100&search=","level":"error","timestamp":"2018-08-20T09:35:07.189Z"}
+{"level":"error","timestamp":"2018-08-20T09:35:19.498Z"}
+{"level":"error","timestamp":"2018-08-20T09:35:19.527Z"}
+{"level":"error","timestamp":"2018-08-20T09:35:19.531Z"}
+{"message":"HTTP Status 429 - https://api-endpoint.igdb.com/games/?fields=name,rating,summary,first_release_date,cover&limit=8&offset=0&filter[rating][gte]=0&filter[rating][lte]=100&search=","level":"error","timestamp":"2018-08-20T09:35:19.535Z"}
+{"level":"error","timestamp":"2018-08-20T09:35:19.548Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:39:04.662Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:39:05.680Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:39:05.692Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:52:14.633Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:52:15.673Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:52:15.680Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:52:23.995Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:52:25.036Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:52:25.048Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:52:28.365Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:52:29.398Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:52:29.417Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:57:43.266Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:57:44.296Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:57:44.311Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:58:52.673Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:58:53.693Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:58:53.701Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:59:01.728Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:59:02.753Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:59:02.779Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:59:26.583Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T09:59:29.026Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T09:59:30.051Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T09:59:30.066Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-20T10:01:21.068Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-20T10:01:22.113Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-20T10:01:22.134Z"}

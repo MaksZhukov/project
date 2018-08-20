@@ -7,7 +7,7 @@ import logger from '../../common/helpers/winston/index.mjs';
 const client = igdb.default(config.igdb.key);
 
 cloudinary.config({
-  cloud_name: 'usersPhotos',
+  cloud_name: 'dko43doe7',
   api_key: '537443224152494',
   api_secret: 'XfvKcziP7yoK8sdgOU4DqPhztIc',
 });
@@ -32,7 +32,6 @@ class MyGamesService {
 
   async removeFavorite(userIdAndGameId) {
     let response = '';
-    console.log(userIdAndGameId);
     await userGames.remove(userIdAndGameId, (errGame) => {
       if (errGame) {
         logger.error(errGame);
@@ -94,10 +93,37 @@ class MyGamesService {
     return { client: { ...config.client.response.getMyGames, games: gamesWithFavoriteAndPhotos } };
   }
 
-  async addImages({ userId, gameId, file }) {
-    cloudinary.uploader.upload(file, (result) => {
-      console.log(result);
+  async addImages({ userId, gameId, files }) {
+    let urls = [];
+    let response = '';
+    const promisesUpload = [];
+    for (const file in files) {
+      promisesUpload.push(new Promise((resolve, reject) => {
+        cloudinary.v2.uploader.upload_stream(null,
+          async (error, result) => {
+            if (error) {
+              reject(error);
+            }
+            resolve(result.url);
+          }).end(files[file].data);
+      }));
+    }
+    await Promise.all(promisesUpload).then((responsePromiseUpload) => {
+      urls = responsePromiseUpload;
     });
+
+    await userGames.findOneAndUpdate({ userId, gameId },
+      { $set: { updated: new Date() } }, (errGame, game) => {
+        if (errGame) {
+          logger.error(errGame);
+        }
+        if (game) {
+          game.photos.push(...urls);
+          game.save();
+          response = { client: { ...config.client.response.addImages, urls, gameId } };
+        }
+      });
+    return response;
   }
 }
 

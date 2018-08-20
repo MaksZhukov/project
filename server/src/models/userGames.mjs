@@ -12,6 +12,10 @@ const UserGamesSchema = new mongoose.Schema({
     type: Date,
     default: new Date(),
   },
+  updated: {
+    type: Date,
+    default: new Date(),
+  },
 });
 
 export default mongoose.model(config.dataBase.collections.userGames, UserGamesSchema);

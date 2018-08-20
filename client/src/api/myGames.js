@@ -20,8 +20,7 @@ const fetchResponseGetMyGames = offsetAndUserId => fetch('/api/get-my-games', {
 
 const fetchResponseAddImages = dataFromUser => fetch('/api/add-images', {
   method: 'POST',
-  headers: API_HEADERS,
-  body: JSON.stringify(dataFromUser),
+  body: dataFromUser,
 }).then(response => response.json()).then(data => data);
 
 export default {
