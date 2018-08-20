@@ -32,14 +32,14 @@ const styles = theme => ({
     backgroundColor: red[500],
   },
   avatarNoRating: {
-    backgroundColor: NO_CONTENT_API_GAME.rating[500],
+    backgroundColor: NO_CONTENT_API_GAME.RATING[500],
   },
 });
 
 class CardGame extends React.PureComponent {
   clickFavorite = () => {
     const { props } = this;
-    if (props.gameInfo.favorite) {
+    if (props.gameInfo && props.gameInfo.favorite) {
       props.removeFavorite({ userId: props.userId, gameId: props.gameInfo.id });
     } else {
       props.addFavorite({ userId: props.userId, gameId: props.gameInfo.id });
@@ -59,16 +59,16 @@ class CardGame extends React.PureComponent {
               </Avatar>
               )}
             title={gameInfo.name}
-            subheader={gameInfo.date ? moment(gameInfo.date).format('YYYY MMMM DD') : NO_CONTENT_API_GAME.date}
+            subheader={gameInfo.date ? moment(gameInfo.date).format('YYYY MMMM DD') : NO_CONTENT_API_GAME.DATE}
           />
           <CardMedia
             className={classes.media}
-            image={gameInfo.image ? gameInfo.image.url : NO_CONTENT_API_GAME.image}
+            image={gameInfo.image ? gameInfo.image.url : NO_CONTENT_API_GAME.IMAGE}
             title={gameInfo.name}
           />
           <CardContent>
             <Typography>
-              {gameInfo.summary ? gameInfo.summary : NO_CONTENT_API_GAME.summary}
+              {gameInfo.summary ? gameInfo.summary : NO_CONTENT_API_GAME.SUMMARY}
             </Typography>
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>

@@ -7,6 +7,7 @@ import {
   List, AutoSizer, CellMeasurer, CellMeasurerCache,
 } from 'react-virtualized';
 import CardMyGame from './CardMyGame';
+import { COUNT_GAMES_ON_ROW, OFFSET_SCROLL_LIST_BOTTOM } from '../../../constants';
 
 
 const styles = ({
@@ -46,7 +47,7 @@ class MyGames extends React.PureComponent {
       return;
     }
     if (!responseGetMyGames.loading
-      && scrollTop >= scrollHeight - clientHeight - 100) {
+      && scrollTop >= scrollHeight - clientHeight - OFFSET_SCROLL_LIST_BOTTOM) {
       props.getMyGames({ userId: props.userId, offset: games.length });
     }
   }
@@ -55,7 +56,8 @@ class MyGames extends React.PureComponent {
     index, key, parent, style,
   }) => {
     const { props } = this;
-    const gamesBy4 = props.games.slice(index * 4, index * 4 + 4);
+    const gamesBy4 = props.games.slice(index * COUNT_GAMES_ON_ROW,
+      index * COUNT_GAMES_ON_ROW + COUNT_GAMES_ON_ROW);
     return (
       <CellMeasurer
         key={key}

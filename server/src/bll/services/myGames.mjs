@@ -16,74 +16,79 @@ cloudinary.config({
 class MyGamesService {
   async addFavorite(userIdAndGameId) {
     let response = '';
-    await userGames.create(userIdAndGameId)
-      .then(() => {
-        response = {
-          client: {
-            ...config.client.response.removeFavorite,
-            gameId: userIdAndGameId.gameId,
-          },
-        };
-      }).catch((errGame) => {
-        logger.error(errGame);
-      });
+    try {
+      await userGames.create(userIdAndGameId);
+      response = {
+        client: {
+          ...config.client.response.addFavorite,
+          gameId: userIdAndGameId.gameId,
+        },
+      };
+    } catch (error) {
+      logger.error(error);
+    }
     return response;
   }
 
   async removeFavorite(userIdAndGameId) {
     let response = '';
-    await userGames.remove(userIdAndGameId, (errGame) => {
-      if (errGame) {
-        logger.error(errGame);
-      } else {
-        response = {
-          client: {
-            ...config.client.response.removeFavorite,
-            gameId: userIdAndGameId.gameId,
-          },
-        };
-      }
-    });
+    try {
+      await userGames.remove(userIdAndGameId);
+      response = {
+        client: {
+          ...config.client.response.removeFavorite,
+          gameId: userIdAndGameId.gameId,
+        },
+      };
+    } catch (error) {
+      logger.error(error);
+    }
     return response;
   }
 
   async gamesWithFavorite(games) {
     const response = { games: [] };
     await Promise.all(games.map(async (gameInfo) => {
-      await userGames.find({ gameId: gameInfo.id }, (errGame, arrGames) => {
-        if (errGame) {
-          logger.error(errGame);
-        }
-        if (arrGames.length) {
+      try{
+        const game = await userGames.find({ gameId: gameInfo.id })
+        if (game.length) {
           response.games.push({ ...gameInfo, favorite: true });
         } else {
           response.games.push({ ...gameInfo, favorite: false });
         }
-      });
+        return game
+      }
+      catch(error){
+        logger.error(error);
+      }
     }));
     return response;
   }
 
   async getMyGames({ offset, userId }) {
-    let uGames = [];
-    await userGames.find({ userId }, (errGame, arrGames) => {
-      if (errGame) {
-        logger.error(errGame);
+    let uGames = [], games = [];
+    try{
+      const responseUserGames = await userGames.find({ userId });
+      if (responseUserGames.length){
+        uGames = responseUserGames.slice(offset);
       }
-      if (arrGames.length) {
-        uGames = arrGames.slice(offset);
-      }
-    });
-    const games = uGames.length ? await client.games({
-      ids: uGames.map(userGameInfo => userGameInfo.gameId),
-      fields: [
-        'name',
-        'summary',
-      ],
-      limit: 8,
-    }).then(resGames => resGames.body).catch((error) => {
-      logger.error(error.message);
-    }) : [];
+    }
+    catch(error){
+      logger.error(error);
+    }
+    try{
+      games = uGames.length ? (await client.games({
+        ids: uGames.map(userGameInfo => userGameInfo.gameId),
+        fields: [
+          'name',
+          'summary',
+        ],
+        limit: 8,
+      })).body : [];
+    }
+    catch(error){
+      logger.error(error);
+    }
     const gamesWithFavoriteAndPhotos = games.length ? games.map((gameInfo, index) => {
       const game = { ...gameInfo };
       game.favorite = true;
@@ -100,7 +105,7 @@ class MyGamesService {
     for (const file in files) {
       promisesUpload.push(new Promise((resolve, reject) => {
         cloudinary.v2.uploader.upload_stream(null,
-          async (error, result) => {
+          (error, result) => {
             if (error) {
               reject(error);
             }
@@ -108,21 +113,21 @@ class MyGamesService {
           }).end(files[file].data);
       }));
     }
-    await Promise.all(promisesUpload).then((responsePromiseUpload) => {
-      urls = responsePromiseUpload;
-    });
-
-    await userGames.findOneAndUpdate({ userId, gameId },
-      { $set: { updated: new Date() } }, (errGame, game) => {
-        if (errGame) {
-          logger.error(errGame);
-        }
-        if (game) {
-          game.photos.push(...urls);
-          game.save();
-          response = { client: { ...config.client.response.addImages, urls, gameId } };
-        }
-      });
+    try{
+      urls = await Promise.all(promisesUpload)
+    }
+    catch(error){
+      logger.error(error)
+    }
+    try{
+      let game = await userGames.findOneAndUpdate({ userId, gameId }, { $set: { updated: new Date() } })
+      game.photos.push(...urls);
+      game.save()
+      response = { client: { ...config.client.response.addImages, urls, gameId } };
+    }
+    catch(error){
+      logger.error(error);
+    }
     return response;
   }
 }

@@ -8,6 +8,7 @@ import {
 } from 'react-virtualized';
 import Filters from './Filters';
 import CardGame from './CardGame';
+import { COUNT_GAMES_ON_ROW, OFFSET_SCROLL_LIST_BOTTOM } from '../../../constants';
 
 
 const styles = ({
@@ -39,7 +40,8 @@ class Explore extends React.PureComponent {
 
   componentWillUnmount() {
     const { props } = this;
-    props.resetData(['games']);
+    const { resetData } = props;
+    resetData(['games']);
   }
 
   handlerScroll = ({ scrollTop, scrollHeight, clientHeight }) => {
@@ -52,7 +54,7 @@ class Explore extends React.PureComponent {
       return;
     }
     if (!responseGetDataGames.loading
-      && scrollTop >= scrollHeight - clientHeight - 100) {
+      && scrollTop >= scrollHeight - clientHeight - OFFSET_SCROLL_LIST_BOTTOM) {
       props.getDataGames({ offset: games.length, search, filters });
     }
   }
@@ -69,7 +71,8 @@ class Explore extends React.PureComponent {
     index, key, parent, style,
   }) => {
     const { props } = this;
-    const gamesBy4 = props.games.slice(index * 4, index * 4 + 4);
+    const gamesBy4 = props.games.slice(index * COUNT_GAMES_ON_ROW,
+      index * COUNT_GAMES_ON_ROW + COUNT_GAMES_ON_ROW);
     return (
       <CellMeasurer
         key={key}
@@ -120,7 +123,7 @@ class Explore extends React.PureComponent {
             width={width}
             deferredMeasurementCache={this.cache}
             height={height - state.heightHeaderAndFilter}
-            rowCount={Math.ceil(games.length / 4)}
+            rowCount={Math.ceil(games.length / COUNT_GAMES_ON_ROW)}
             rowHeight={this.cache.rowHeight}
             rowRenderer={this.rowRenderer}
             overscanRowCount={3}

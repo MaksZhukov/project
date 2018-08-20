@@ -51,7 +51,7 @@ const reducer = handleActions({
 
     const games = state.games.map((gameInfo) => {
       const game = { ...gameInfo };
-      if (gameId === game.id) {
+      if (game && gameId === game.id) {
         game.photos.push(...urls);
       }
       return game;

@@ -16,7 +16,10 @@ const defaultState = {
     gameEngine: '',
     PEGLRating: '',
     gameMode: '',
-    rating: RATING,
+    rating: {
+      min: RATING.MIN,
+      max: RATING.MAX
+    },
   },
   responseGetDataFilters: {},
   responseGetDataGames: {},
@@ -57,7 +60,7 @@ const reducer = handleActions({
   [changeGameFavorite](state, { payload: gameId }) {
     const games = state.games.map((gameInfo) => {
       const game = { ...gameInfo };
-      if (game.id === gameId) {
+      if (game && game.id === gameId) {
         game.favorite = !game.favorite;
       }
       return game;

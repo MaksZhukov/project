@@ -12,7 +12,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import Dropzone from 'react-dropzone';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
-import { NO_CONTENT_API_GAME } from '../../../constants';
+import { NO_CONTENT_API_GAME, COLS_FOR_NO_EACH_THIRD_IMAGE, COLS_FOR_EACH_THIRD_IMAGE } from '../../../constants';
 
 const styles = () => ({
   card: {
@@ -72,7 +72,7 @@ class CardMyGame extends React.PureComponent {
           />
           <CardContent>
             <Typography>
-              {gameInfo.summary ? gameInfo.summary : NO_CONTENT_API_GAME.summary}
+              {gameInfo.summary ? gameInfo.summary : NO_CONTENT_API_GAME.SUMMARY}
             </Typography>
             <Dropzone accept="image/jpeg, image/png" onDrop={this.handleDrop} className={classes.dropZone}>
               <CloudUpload className={classes.CloudUpload} />
@@ -81,7 +81,7 @@ class CardMyGame extends React.PureComponent {
               ? (
                 <GridList cellHeight="auto" className={classes.gridList} cols={2}>
                   {gameInfo.photos.map((url, index) => (
-                    <GridListTile key={url} cols={index % 3 === 0 ? 2 : 1}>
+                    <GridListTile key={url} cols={index % 3 === 0 ? COLS_FOR_EACH_THIRD_IMAGE : COLS_FOR_NO_EACH_THIRD_IMAGE}>
                       <img src={url} alt={`img${index}`} className={classes.gridImage} />
                     </GridListTile>
                   ))}
