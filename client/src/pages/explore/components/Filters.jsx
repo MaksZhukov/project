@@ -145,7 +145,7 @@ class Filters extends React.PureComponent {
           <ExpansionPanel className={classes.root} onChange={this.handleChangePanel}>
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
               <Typography className={classes.heading}>
-                Filters
+                Filters 
               </Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails className={classes.detailSearch}>

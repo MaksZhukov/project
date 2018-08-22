@@ -37,6 +37,19 @@ class MyGames extends React.PureComponent {
     props.clearMyGames();
   }
 
+  getCountColsGrid = (length) => {
+    switch (length) {
+      case 1:
+        return 12;
+      case 2:
+        return 6;
+      case 3:
+        return 4;
+      default:
+        return 3;
+    }
+  }
+
   handlerScroll = ({ scrollTop, scrollHeight, clientHeight }) => {
     const { props } = this;
     const {
@@ -66,9 +79,9 @@ class MyGames extends React.PureComponent {
         columnIndex={0}
         rowIndex={index}
       >
-        <Grid container key={index} spacing={40} style={style}>
+        <Grid container key={index} spacing={40} style={style} className={props.classes.gridImages}>
           {gamesBy4.map(gameInfo => (
-            <Grid key={gameInfo.id} item xs={3}>
+            <Grid key={gameInfo.id} item xs={this.getCountColsGrid(gamesBy4.length)}>
               <CardMyGame
                 gameInfo={gameInfo}
                 addFavorite={props.addFavorite}
@@ -89,6 +102,7 @@ class MyGames extends React.PureComponent {
       classes, games, responseGetMyGames,
     } = props;
     this.cache.clearAll();
+    console.log('hello');
     return (
       <React.Fragment>
         <AutoSizer>

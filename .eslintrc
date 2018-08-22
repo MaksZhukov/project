@@ -9,7 +9,6 @@
     "react/forbid-prop-types": "off",
     "linebreak-style": 0,
     "class-methods-use-this": "off",
-    "guard-for-in": "off",
     "guard-for-in": "off"
   },
   "parser": "babel-eslint"

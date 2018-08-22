@@ -12,12 +12,11 @@ import ShareIcon from '@material-ui/icons/Share';
 import Dropzone from 'react-dropzone';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
 import { NO_CONTENT_API_GAME, COLS_FOR_NO_EACH_THIRD_IMAGE, COLS_FOR_EACH_THIRD_IMAGE } from '../../../constants';
 
 const styles = () => ({
-  card: {
-    maxWidth: 400,
-  },
   dropZone: {
     display: 'flex',
     margin: '20px 0',
@@ -35,11 +34,19 @@ const styles = () => ({
   },
   gridImage: {
     'max-width': '100%',
+    width: 'initial',
     height: 'auto',
+    position: 'static',
+    transform: 'translateY(0px)',
   },
 });
 
 class CardMyGame extends React.PureComponent {
+  state = {
+    dialogIsOpen: false,
+    dialogImageUrl: '',
+  }
+
   clickFavorite = () => {
     const { props } = this;
     if (props.gameInfo.favorite) {
@@ -60,9 +67,19 @@ class CardMyGame extends React.PureComponent {
     props.addImages(formDataFiles);
   }
 
+  handleClickOpen = url => () => {
+    console.log('hello');
+    this.setState({ dialogIsOpen: true, dialogImageUrl: url });
+  }
+
+  handleClickClose =() => {
+    console.log('close');
+    this.setState({ dialogIsOpen: false });
+  }
+
 
   render() {
-    const { props } = this;
+    const { props, state } = this;
     const { classes, gameInfo } = props;
     return (
       <React.Fragment>
@@ -81,8 +98,12 @@ class CardMyGame extends React.PureComponent {
               ? (
                 <GridList cellHeight="auto" className={classes.gridList} cols={2}>
                   {gameInfo.photos.map((url, index) => (
-                    <GridListTile key={url} cols={index % 3 === 0 ? COLS_FOR_EACH_THIRD_IMAGE : COLS_FOR_NO_EACH_THIRD_IMAGE}>
-                      <img src={url} alt={`img${index}`} className={classes.gridImage} />
+                    <GridListTile
+                      key={url}
+                      cols={index % 3 === 0 ? COLS_FOR_EACH_THIRD_IMAGE
+                        : COLS_FOR_NO_EACH_THIRD_IMAGE}
+                    >
+                      <img src={url} alt={`img${index}`} className={classes.gridImage} onClick={this.handleClickOpen(url)} />
                     </GridListTile>
                   ))}
                 </GridList>
@@ -97,6 +118,15 @@ class CardMyGame extends React.PureComponent {
             </IconButton>
           </CardActions>
         </Card>
+        <Dialog
+          open={state.dialogIsOpen}
+          onClose={this.handleClickClose}
+          maxWidth={false}
+        >
+          <DialogContent>
+            <img src={state.dialogImageUrl} alt="img" className={classes.gridImage} />
+          </DialogContent>
+        </Dialog>
       </React.Fragment>
     );
   }
