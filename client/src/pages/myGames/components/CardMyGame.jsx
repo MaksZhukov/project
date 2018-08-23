@@ -35,9 +35,12 @@ const styles = () => ({
   gridImage: {
     'max-width': '100%',
     width: 'initial',
-    height: 'auto',
+    height: 'inherit',
     position: 'static',
     transform: 'translateY(0px)',
+  },
+  dialogContent: {
+    display: 'flex',
   },
 });
 
@@ -68,12 +71,10 @@ class CardMyGame extends React.PureComponent {
   }
 
   handleClickOpen = url => () => {
-    console.log('hello');
     this.setState({ dialogIsOpen: true, dialogImageUrl: url });
   }
 
   handleClickClose =() => {
-    console.log('close');
     this.setState({ dialogIsOpen: false });
   }
 
@@ -123,7 +124,7 @@ class CardMyGame extends React.PureComponent {
           onClose={this.handleClickClose}
           maxWidth={false}
         >
-          <DialogContent>
+          <DialogContent className={classes.dialogContent}>
             <img src={state.dialogImageUrl} alt="img" className={classes.gridImage} />
           </DialogContent>
         </Dialog>

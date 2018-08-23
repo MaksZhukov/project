@@ -18,7 +18,7 @@ const defaultState = {
     gameMode: '',
     rating: {
       min: RATING.MIN,
-      max: RATING.MAX
+      max: RATING.MAX,
     },
   },
   responseGetDataFilters: {},

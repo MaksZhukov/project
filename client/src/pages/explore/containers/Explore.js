@@ -8,10 +8,11 @@ import {
   addFavorite,
   removeFavorite,
 } from '../../../actions/myGames';
+import { gamesSelector } from '../../../selectors';
 
 
 const mapStateToProps = state => ({
-  games: state.game.games,
+  games: gamesSelector(state),
   search: state.game.search,
   filters: state.game.filters,
   userId: state.user.userInfo.id,
