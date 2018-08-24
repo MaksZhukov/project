@@ -6,8 +6,7 @@ import 'react-virtualized/styles.css';
 import {
   List, AutoSizer, CellMeasurer, CellMeasurerCache,
 } from 'react-virtualized';
-import Filters from './Filters';
-import CardGame from './CardGame';
+import CardMyGame from './CardMyGame';
 import { COUNT_GAMES_ON_ROW, OFFSET_SCROLL_LIST_BOTTOM } from '../../../constants';
 
 
@@ -23,15 +22,10 @@ const styles = ({
     bottom: 0,
   },
 });
-class Explore extends React.PureComponent {
-  state = {
-    heightHeaderAndFilter: 148,
-  }
-
+class MyGames extends React.PureComponent {
   componentWillMount() {
     const { props } = this;
-    props.getDataFilters();
-    props.getDataGames({ search: props.search, filters: props.filters });
+    props.getMyGames({ userId: props.userId, offset: 0 });
     this.cache = new CellMeasurerCache({
       fixedWidth: true,
       defaultHeight: 100,
@@ -40,31 +34,35 @@ class Explore extends React.PureComponent {
 
   componentWillUnmount() {
     const { props } = this;
-    const { resetData } = props;
-    resetData(['games']);
+    props.clearMyGames();
+  }
+
+  getCountColsGrid = (length) => {
+    switch (length) {
+      case 1:
+        return 12;
+      case 2:
+        return 6;
+      case 3:
+        return 4;
+      default:
+        return 3;
+    }
   }
 
   handlerScroll = ({ scrollTop, scrollHeight, clientHeight }) => {
     const { props } = this;
     const {
-      responseGetDataGames, games, filters, search,
+      responseGetMyGames, games,
     } = props;
-    if (!responseGetDataGames.loading
-      && responseGetDataGames.games && !responseGetDataGames.games.length) {
+    if (!responseGetMyGames.loading
+      && responseGetMyGames.games && !responseGetMyGames.games.length) {
       return;
     }
-    if (!responseGetDataGames.loading
+    if (!responseGetMyGames.loading
       && scrollTop >= scrollHeight - clientHeight - OFFSET_SCROLL_LIST_BOTTOM) {
-      props.getDataGames({ offset: games.length, search, filters });
+      props.getMyGames({ userId: props.userId, offset: games.length });
     }
-  }
-
-  UpdateHeightHeaderAndFilter = (value) => {
-    this.setState({ heightHeaderAndFilter: value });
-  }
-
-  resetCacheList = () => {
-    this.cache.clearAll();
   }
 
   rowRenderer = ({
@@ -81,14 +79,15 @@ class Explore extends React.PureComponent {
         columnIndex={0}
         rowIndex={index}
       >
-        <Grid container key={index} spacing={40} style={style}>
+        <Grid container key={index} spacing={40} style={style} className={props.classes.gridImages}>
           {gamesBy4.map(gameInfo => (
-            <Grid key={gameInfo.id} item xs={3}>
-              <CardGame
+            <Grid key={gameInfo.id} item xs={this.getCountColsGrid(gamesBy4.length)}>
+              <CardMyGame
                 gameInfo={gameInfo}
-                userId={props.userId}
                 addFavorite={props.addFavorite}
                 removeFavorite={props.removeFavorite}
+                userId={props.userId}
+                addImages={props.addImages}
               />
             </Grid>
           ))}
@@ -98,23 +97,13 @@ class Explore extends React.PureComponent {
   }
 
   render() {
-    const { props, state } = this;
+    const { props } = this;
     const {
-      classes, games, getDataGames, resetData,
-      responseGetDataFilters, search, filters, responseGetDataGames,
+      classes, games, responseGetMyGames,
     } = props;
+    this.cache.clearAll();
     return (
       <React.Fragment>
-        <Filters
-          responseGetDataFilters={responseGetDataFilters}
-          changeData={props.changeData}
-          getDataGames={getDataGames}
-          resetData={resetData}
-          search={search}
-          filters={filters}
-          UpdateHeightHeaderAndFilter={this.UpdateHeightHeaderAndFilter}
-          resetCacheList={this.resetCacheList}
-        />
         <AutoSizer>
           {({ height, width }) => (<List
             ref={(node) => { this.list = node; }}
@@ -122,8 +111,8 @@ class Explore extends React.PureComponent {
             className={classes.gridImages}
             width={width}
             deferredMeasurementCache={this.cache}
-            height={height - state.heightHeaderAndFilter}
-            rowCount={Math.ceil(games.length / COUNT_GAMES_ON_ROW)}
+            height={height - 60}
+            rowCount={Math.ceil(games.length / 4)}
             rowHeight={this.cache.rowHeight}
             rowRenderer={this.rowRenderer}
             overscanRowCount={3}
@@ -131,7 +120,7 @@ class Explore extends React.PureComponent {
           />
           )}
         </AutoSizer>
-        {responseGetDataGames.loading === true
+        {responseGetMyGames.loading === true
           ? (
             <div className={classes.loader}>
               <CircularProgress size={50} />
@@ -144,4 +133,4 @@ class Explore extends React.PureComponent {
   }
 }
 
-export default withStyles(styles)(Explore);
+export default withStyles(styles)(MyGames);

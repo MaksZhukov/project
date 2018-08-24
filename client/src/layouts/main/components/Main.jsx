@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import queryString from 'query-string';
 import NavBar from '../../navBar/NavBar';
 import ExploreContainer from '../../../pages/explore/containers/Explore';
+import MyGamesContainer from '../../../pages/myGames/containers/MyGames';
 
 class Main extends React.PureComponent {
   componentWillMount() {
@@ -25,6 +26,7 @@ class Main extends React.PureComponent {
           <NavBar user={props.user} />
           <Switch>
             <Route exact path="(/explore|/)" component={ExploreContainer} />
+            <Route exact path="/my-games" component={MyGamesContainer} />
           </Switch>
         </div>
       );

@@ -8,7 +8,8 @@
     "no-console": "off",
     "react/forbid-prop-types": "off",
     "linebreak-style": 0,
-    "class-methods-use-this": "off"
+    "class-methods-use-this": "off",
+    "guard-for-in": "off"
   },
   "parser": "babel-eslint"
 }

@@ -6,53 +6,70 @@
     "name": "react_video_games",
     "url": "mongodb://localhost:27017",
     "collections": {
-      "users": "users"
+      "users": "users",
+      "userGames": "user_games"
     }
   },
   "client":{
     "mailRecovery": {
       "subject": "Recovery pass",
       "text": "Confirm your recovery pass",
-      "message": "check your mail"
+      "message": "Check your mail"
     },
     "mailRegistration": {
       "subject": "Registration",
       "text": "Confirm your registration by",
-      "message": "confirm your mail",
+      "message": "Confirm your mail",
       "from": "video games <videogames@gmail.com>"
     },
     "response": {
       "errDatabase": {
         "status": "error",
-        "message": "problem with database"
+        "message": "Problem with database"
       },
       "errMail": {
         "status": "error",
-        "message": "problem with sending mail"
+        "message": "Problem with sending mail"
       },
       "signIn": {
         "status": "success",
-        "message": "login successful"
+        "message": "Login successful"
       },
       "searchUserNotFound": {
         "status": "error",
-        "message": "user not found"
+        "message": "User not found"
       },
       "registeredUser": {
         "status": "warning",
-        "message": "user has already been registered"
+        "message": "User has already been registered"
       },
       "registeredUserNoConfirm": {
         "status": "warning",
-        "message": "check your mail"
+        "message": "Check your mail"
       },
       "changedPass": {
         "status": "success",
-        "message": "pass has been changed"
+        "message": "Pass has been changed"
       },
       "checkToken": {
         "status": "success",
-        "message": "token is valid"
+        "message": "Token is valid"
+      },
+      "addFavorite": {
+        "status": "success",
+        "message": "Favorite game was added"
+      },
+      "removeFavorite": {
+        "status": "success",
+        "message": "Favorite game was added"
+      },
+      "getMyGames": {
+        "status": "success",
+        "message": "User's games were received"
+      },
+      "addImages": {
+        "status": "success",
+        "message": "Images were added"
       }
     }
   },
@@ -73,7 +90,7 @@
     "port": "587",
     "auth": {
       "user": "malabar7778892@gmail.com",
-      "pass": "ytngfhjkz199719971997"
+      "pass": "fraer7778892"
     }
   },
   "crypto": {
@@ -81,6 +98,6 @@
     "password": "d6F3Efeq"
   },
   "igdb": {
-    "key": "6c004db05d7d16b7ff7aad10461d03d5"
+    "key": "6895241339143d83eb5ed616971cf9d9"
   }
 }

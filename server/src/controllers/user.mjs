@@ -7,8 +7,7 @@ import { encrypt } from '../common/helpers/encryption/index.mjs';
 import app from '../app.mjs';
 
 app.post('/api/sign-up/jwt', (req, res) => {
-  const dataFromUser = req.body;
-  const { mail } = dataFromUser;
+  const { mail, name, pass } = req.body;
   userService.searchUser({ mail }).then((responseSearch) => {
     if (responseSearch.isUser) {
       res.json(responseSearch.client);
@@ -16,21 +15,23 @@ app.post('/api/sign-up/jwt', (req, res) => {
       userService.sendMail(mail).then((responseMail) => {
         if (responseMail.token) {
           const dataUser = {
-            name: dataFromUser.name,
-            mail: dataFromUser.mail,
-            pass: encrypt(dataFromUser.pass),
+            name,
+            mail,
+            pass: encrypt(pass),
             provider: null,
             token: responseMail.token,
             active: false,
           };
           userService.createUser(dataUser).then((responseCreate) => {
             if (!responseCreate) {
-              agenda.defineTaskRemoveUser('remove user', { mail: dataFromUser.mail });
+              agenda.defineTaskRemoveUser('remove user', { mail });
               res.json(responseMail.client);
             } else {
               res.json(responseCreate.client);
             }
           });
+        } else {
+          res.json(responseMail.client);
         }
       });
     }
