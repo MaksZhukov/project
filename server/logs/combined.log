@@ -2776,3 +2776,6 @@
 {"message":"Listening on port 3000","level":"info","timestamp":"2018-08-23T09:37:19.818Z"}
 {"message":"agenda launched","level":"info","timestamp":"2018-08-23T09:37:20.905Z"}
 {"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-23T09:37:20.912Z"}
+{"message":"Listening on port 3000","level":"info","timestamp":"2018-08-23T13:45:13.659Z"}
+{"message":"connected to mongodb on database react_video_games","level":"info","timestamp":"2018-08-23T13:45:14.690Z"}
+{"message":"agenda launched","level":"info","timestamp":"2018-08-23T13:45:14.691Z"}

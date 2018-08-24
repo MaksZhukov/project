@@ -102,7 +102,6 @@ class MyGames extends React.PureComponent {
       classes, games, responseGetMyGames,
     } = props;
     this.cache.clearAll();
-    console.log('hello');
     return (
       <React.Fragment>
         <AutoSizer>
