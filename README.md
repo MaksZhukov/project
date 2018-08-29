@@ -1,7 +1,7 @@
 
 # install package
 
-npm install in server folder
+npm install in server folder  
 npm install in client folder
 
 # start developing
