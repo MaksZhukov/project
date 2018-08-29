@@ -1,9 +1,10 @@
 
 # install package
 
-npm install
+npm install in server folder
+npm install in client folder
 
 # start developing
 
-npm run client  
-npm run server  
+npm run client-dev  
+npm run server-dev
