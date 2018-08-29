@@ -41,7 +41,7 @@ class Explore extends React.PureComponent {
   componentWillUnmount() {
     const { props } = this;
     const { resetData } = props;
-    resetData(['games']);
+    resetData(['games', 'search']);
   }
 
   handlerScroll = ({ scrollTop, scrollHeight, clientHeight }) => {
@@ -117,7 +117,6 @@ class Explore extends React.PureComponent {
         />
         <AutoSizer>
           {({ height, width }) => (<List
-            ref={(node) => { this.list = node; }}
             onScroll={this.handlerScroll}
             className={classes.gridImages}
             width={width}

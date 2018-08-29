@@ -4,7 +4,8 @@ import config from 'config';
 import userService from '../bll/services/user.mjs';
 import agenda from '../bll/services/scheduler/index.mjs';
 import { encrypt } from '../common/helpers/encryption/index.mjs';
-import app from '../app.mjs';
+import { app } from '../app.mjs';
+
 
 app.post('/api/sign-up/jwt', (req, res) => {
   const { mail, name, pass } = req.body;
@@ -116,17 +117,27 @@ app.get('/sign-up/facebook/callback',
   }),
   (req, res) => {
     const { user } = req;
-    const dataUser = {
-      profileId: user.id,
-      name: user.displayName,
-      provider: user.provider,
-      token: user.accessToken,
-      active: true,
-    };
-    userService.createUser(dataUser, 'profileId').then((responseCreate) => {
-      if (!responseCreate) {
-        const redirectUri = `${config.urlClient}/?token=${user.accessToken}`;
-        res.redirect(redirectUri);
+    userService.searchUser({ profileId: user.id }).then((responseSearch) => {
+      if (!responseSearch.isUser) {
+        const dataUser = {
+          profileId: user.id,
+          name: user.displayName,
+          provider: user.provider,
+          token: user.accessToken,
+          active: true,
+        };
+        userService.createUser(dataUser, 'profileId').then((responseCreate) => {
+          if (!responseCreate) {
+            const redirectUri = `${config.urlClient}/sign-up?token=${user.accessToken}`;
+            res.redirect(redirectUri);
+          }
+        });
+      } else {
+        userService.updateUser({ profileId: user.id }, { token: user.accessToken }, null, config.client.response.signIn)
+          .then(() => {
+            const redirectUri = `${config.urlClient}/sign-up?token=${user.accessToken}`;
+            res.redirect(redirectUri);
+          });
       }
     });
   });
@@ -140,15 +151,22 @@ app.get('/sign-in/facebook/callback',
   }),
   (req, res) => {
     const { user } = req;
-    const dataUser = {
-      profileId: user.id,
-      name: user.displayName,
-      provider: user.provider,
-      token: user.accessToken,
-      active: true,
-    };
-    userService.createUser(dataUser, 'profileId').then((responseCreate) => {
-      if (!responseCreate) {
+    userService.searchUser({ profileId: user.id }).then((responseSearch) => {
+      if (!responseSearch.isUser) {
+        const dataUser = {
+          profileId: user.id,
+          name: user.displayName,
+          provider: user.provider,
+          token: user.accessToken,
+          active: true,
+        };
+        userService.createUser(dataUser, 'profileId').then((responseCreate) => {
+          if (!responseCreate) {
+            const redirectUri = `${config.urlClient}/sign-up?token=${user.accessToken}`;
+            res.redirect(redirectUri);
+          }
+        });
+      } else {
         const redirectUri = `${config.urlClient}/sign-up?token=${user.accessToken}`;
         res.redirect(redirectUri);
       }

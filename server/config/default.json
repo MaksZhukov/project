@@ -7,7 +7,8 @@
     "url": "mongodb://localhost:27017",
     "collections": {
       "users": "users",
-      "userGames": "user_games"
+      "userGames": "user_games",
+      "userChat": "user_chat"
     }
   },
   "client":{
@@ -70,6 +71,14 @@
       "addImages": {
         "status": "success",
         "message": "Images were added"
+      },
+      "getAllMessages": {
+        "status":"success",
+        "message": "all messages were received"
+      },
+      "sendMessage": {
+        "status":"success",
+        "message": "message was sent"
       }
     }
   },
@@ -98,6 +107,6 @@
     "password": "d6F3Efeq"
   },
   "igdb": {
-    "key": "6895241339143d83eb5ed616971cf9d9"
+    "key": "56ab567a4511b6d615876f1259f8d2da"
   }
 }

@@ -18,4 +18,5 @@ const UserGamesSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model(config.dataBase.collections.userGames, UserGamesSchema);
+export default mongoose.model(config.dataBase.collections.userGames,
+  UserGamesSchema, config.dataBase.collections.userGames);

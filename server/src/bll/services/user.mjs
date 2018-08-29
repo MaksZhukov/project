@@ -7,7 +7,7 @@ import transporter from '../../common/helpers/mail/index.mjs';
 class UserService {
   async searchUser(searchData) {
     let response = '';
-    try{
+    try {
       const user = await User.findOne(searchData);
       if (user && user.active && !searchData.pass) {
         response = {
@@ -29,9 +29,8 @@ class UserService {
       if (!user) {
         response = { client: config.client.response.searchUserNotFound, isUser: false };
       }
-    }
-    catch(error){
-      logger.error(err);
+    } catch (error) {
+      logger.error(error);
       response = { client: config.client.response.errDatabase, isUser: false };
     }
     return response;
@@ -47,15 +46,14 @@ class UserService {
   }) {
     let response = '';
     const token = jwt.sign({ mail }, config.jsonWebToken.secret, config.jsonWebToken.expresIn);
-    try{
+    try {
       const info = await transporter.sendMail({
         from: config.client.mailRegistration.from, to: mail, subject: options.subject, html: `<b>${options.text}: </b><a href="${options.urlHost}/${options.path}?token=${token}">link</a>`,
-      })
+      });
       logger.info(info);
       response = { client: { status: 'warning', message: options.message }, token };
-    }
-    catch(error){
-      logger.error(err);
+    } catch (error) {
+      logger.error(error);
       response = { client: config.client.response.errMail };
     }
     return response;
@@ -63,11 +61,10 @@ class UserService {
 
   async createUser(userData) {
     let response = '';
-    try{
-      await User.create(userData)
-    }
-    catch(error){
-      logger.error(err);
+    try {
+      await User.create(userData);
+    } catch (error) {
+      logger.error(error);
       response = { client: config.client.response.errDatabase, error: true };
     }
     return response;
@@ -79,12 +76,11 @@ class UserService {
     if (unset) {
       updated.$unset = unset;
     }
-    try{
+    try {
       const user = await User.findOneAndUpdate(searchData, updated);
       user.save();
       response = { client: toClient, error: false };
-    }
-    catch(error){
+    } catch (error) {
       logger.error(error);
       response = { client: config.client.response.errDatabase, error: true };
     }

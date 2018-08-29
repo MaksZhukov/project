@@ -21,10 +21,6 @@ class SignUp extends React.PureComponent {
     }
   }
 
-  componentWillReceiveProps(newProps) {
-    console.log(newProps);
-  }
-
   handlerInput = ({ target }) => {
     this.setState({ [target.name]: target.value });
   }
@@ -102,7 +98,7 @@ class SignUp extends React.PureComponent {
             Register With
 </div>
               <div className="form-group mb-none">
-                <a href={config.signUpFacebookUrl} className="form-sign-up-facebook btn btn-blue">
+                <a href={`${config.serverUrl}/sign-up/facebook`} className="form-sign-up-facebook btn btn-blue">
 
 
 
