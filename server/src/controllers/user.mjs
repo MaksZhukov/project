@@ -4,11 +4,11 @@ import config from 'config';
 import userService from '../bll/services/user.mjs';
 import agenda from '../bll/services/scheduler/index.mjs';
 import { encrypt } from '../common/helpers/encryption/index.mjs';
-import app from '../app.mjs';
+import { app } from '../app.mjs';
+
 
 app.post('/api/sign-up/jwt', (req, res) => {
-  const dataFromUser = req.body;
-  const { mail } = dataFromUser;
+  const { mail, name, pass } = req.body;
   userService.searchUser({ mail }).then((responseSearch) => {
     if (responseSearch.isUser) {
       res.json(responseSearch.client);
@@ -16,21 +16,23 @@ app.post('/api/sign-up/jwt', (req, res) => {
       userService.sendMail(mail).then((responseMail) => {
         if (responseMail.token) {
           const dataUser = {
-            name: dataFromUser.name,
-            mail: dataFromUser.mail,
-            pass: encrypt(dataFromUser.pass),
+            name,
+            mail,
+            pass: encrypt(pass),
             provider: null,
             token: responseMail.token,
             active: false,
           };
           userService.createUser(dataUser).then((responseCreate) => {
             if (!responseCreate) {
-              agenda.defineTaskRemoveUser('remove user', { mail: dataFromUser.mail });
+              agenda.defineTaskRemoveUser('remove user', { mail });
               res.json(responseMail.client);
             } else {
               res.json(responseCreate.client);
             }
           });
+        } else {
+          res.json(responseMail.client);
         }
       });
     }
@@ -115,17 +117,27 @@ app.get('/sign-up/facebook/callback',
   }),
   (req, res) => {
     const { user } = req;
-    const dataUser = {
-      profileId: user.id,
-      name: user.displayName,
-      provider: user.provider,
-      token: user.accessToken,
-      active: true,
-    };
-    userService.createUser(dataUser, 'profileId').then((responseCreate) => {
-      if (!responseCreate) {
-        const redirectUri = `${config.urlClient}/?token=${user.accessToken}`;
-        res.redirect(redirectUri);
+    userService.searchUser({ profileId: user.id }).then((responseSearch) => {
+      if (!responseSearch.isUser) {
+        const dataUser = {
+          profileId: user.id,
+          name: user.displayName,
+          provider: user.provider,
+          token: user.accessToken,
+          active: true,
+        };
+        userService.createUser(dataUser, 'profileId').then((responseCreate) => {
+          if (!responseCreate) {
+            const redirectUri = `${config.urlClient}/sign-up?token=${user.accessToken}`;
+            res.redirect(redirectUri);
+          }
+        });
+      } else {
+        userService.updateUser({ profileId: user.id }, { token: user.accessToken }, null, config.client.response.signIn)
+          .then(() => {
+            const redirectUri = `${config.urlClient}/sign-up?token=${user.accessToken}`;
+            res.redirect(redirectUri);
+          });
       }
     });
   });
@@ -139,15 +151,22 @@ app.get('/sign-in/facebook/callback',
   }),
   (req, res) => {
     const { user } = req;
-    const dataUser = {
-      profileId: user.id,
-      name: user.displayName,
-      provider: user.provider,
-      token: user.accessToken,
-      active: true,
-    };
-    userService.createUser(dataUser, 'profileId').then((responseCreate) => {
-      if (!responseCreate) {
+    userService.searchUser({ profileId: user.id }).then((responseSearch) => {
+      if (!responseSearch.isUser) {
+        const dataUser = {
+          profileId: user.id,
+          name: user.displayName,
+          provider: user.provider,
+          token: user.accessToken,
+          active: true,
+        };
+        userService.createUser(dataUser, 'profileId').then((responseCreate) => {
+          if (!responseCreate) {
+            const redirectUri = `${config.urlClient}/sign-up?token=${user.accessToken}`;
+            res.redirect(redirectUri);
+          }
+        });
+      } else {
         const redirectUri = `${config.urlClient}/sign-up?token=${user.accessToken}`;
         res.redirect(redirectUri);
       }
@@ -171,7 +190,7 @@ app.post('/api/sign-in', (req, res) => {
           }
         });
     } else {
-      res.json(responseSearch.client);
+      res.json({ response: responseSearch.client });
     }
   });
 });

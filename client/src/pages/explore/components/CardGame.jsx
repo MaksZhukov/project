@@ -7,7 +7,6 @@ import Avatar from '@material-ui/core/Avatar';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -33,11 +32,20 @@ const styles = theme => ({
     backgroundColor: red[500],
   },
   avatarNoRating: {
-    backgroundColor: NO_CONTENT_API_GAME.rating[500],
+    backgroundColor: NO_CONTENT_API_GAME.RATING[500],
   },
 });
 
 class CardGame extends React.PureComponent {
+  clickFavorite = () => {
+    const { props } = this;
+    if (props.gameInfo && props.gameInfo.favorite) {
+      props.removeFavorite({ userId: props.userId, gameId: props.gameInfo.id });
+    } else {
+      props.addFavorite({ userId: props.userId, gameId: props.gameInfo.id });
+    }
+  }
+
   render() {
     const { props } = this;
     const { classes, gameInfo } = props;
@@ -51,27 +59,24 @@ class CardGame extends React.PureComponent {
               </Avatar>
               )}
             title={gameInfo.name}
-            subheader={gameInfo.date ? moment(gameInfo.date).format('YYYY MMMM DD') : NO_CONTENT_API_GAME.date}
+            subheader={gameInfo.date ? moment(gameInfo.date).format('YYYY MMMM DD') : NO_CONTENT_API_GAME.DATE}
           />
           <CardMedia
             className={classes.media}
-            image={gameInfo.image ? gameInfo.image.url : NO_CONTENT_API_GAME.image}
+            image={gameInfo.image ? gameInfo.image.url : NO_CONTENT_API_GAME.IMAGE}
             title={gameInfo.name}
           />
           <CardContent>
             <Typography>
-              {gameInfo.summary ? gameInfo.summary : NO_CONTENT_API_GAME.summary}
+              {gameInfo.summary ? gameInfo.summary : NO_CONTENT_API_GAME.SUMMARY}
             </Typography>
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>
-            <IconButton aria-label="Add to favorites">
+            <IconButton aria-label="Add to favorites" color={gameInfo.favorite ? 'secondary' : 'default'} onClick={this.clickFavorite}>
               <FavoriteIcon />
             </IconButton>
             <IconButton aria-label="Share">
               <ShareIcon />
-            </IconButton>
-            <IconButton className={classes.expand}>
-              <ExpandMoreIcon />
             </IconButton>
           </CardActions>
         </Card>

@@ -40,7 +40,7 @@ class NavBar extends React.PureComponent {
                 </Link>
               </Grid>
               <Grid item xs="auto">
-                <Link to="/games" className={classes.link}>
+                <Link to="/my-games" className={classes.link}>
                   <Typography color="inherit">
                       My
                   </Typography>

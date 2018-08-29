@@ -7,20 +7,17 @@ import transporter from '../../common/helpers/mail/index.mjs';
 class UserService {
   async searchUser(searchData) {
     let response = '';
-    await User.findOne(searchData, (err, user) => {
-      if (err) {
-        logger.error(err);
-        response = { client: config.client.response.errDatabase, isUser: false };
-      }
+    try {
+      const user = await User.findOne(searchData);
       if (user && user.active && !searchData.pass) {
         response = {
           client: config.client.response.registeredUser,
           isUser: true,
-          user: { name: user.name },
+          user: { name: user.name, id: user.id },
         };
       }
       if (user && user.active && searchData.pass) {
-        response = { isUser: true, user: { name: user.name } };
+        response = { isUser: true, user: { name: user.name, id: user.id } };
       }
       if (user && !user.active) {
         response = {
@@ -32,8 +29,10 @@ class UserService {
       if (!user) {
         response = { client: config.client.response.searchUserNotFound, isUser: false };
       }
-      return '';
-    });
+    } catch (error) {
+      logger.error(error);
+      response = { client: config.client.response.errDatabase, isUser: false };
+    }
     return response;
   }
 
@@ -47,30 +46,27 @@ class UserService {
   }) {
     let response = '';
     const token = jwt.sign({ mail }, config.jsonWebToken.secret, config.jsonWebToken.expresIn);
-    await transporter.sendMail({
-      from: config.client.mailRegistration.from, to: mail, subject: options.subject, html: `<b>${options.text}: </b><a href="${options.urlHost}/${options.path}?token=${token}">link</a>`,
-    }).then((info) => {
-      if (info) {
-        logger.info(info);
-      }
+    try {
+      const info = await transporter.sendMail({
+        from: config.client.mailRegistration.from, to: mail, subject: options.subject, html: `<b>${options.text}: </b><a href="${options.urlHost}/${options.path}?token=${token}">link</a>`,
+      });
+      logger.info(info);
       response = { client: { status: 'warning', message: options.message }, token };
-    }).catch((err) => {
-      if (err) {
-        logger.error(err);
-        response = { client: config.client.response.errMail };
-      }
-    });
+    } catch (error) {
+      logger.error(error);
+      response = { client: config.client.response.errMail };
+    }
     return response;
   }
 
   async createUser(userData) {
     let response = '';
-    await User.create(userData, (err) => {
-      if (err) {
-        logger.error(err);
-        response = { client: config.client.response.errDatabase, error: true };
-      }
-    });
+    try {
+      await User.create(userData);
+    } catch (error) {
+      logger.error(error);
+      response = { client: config.client.response.errDatabase, error: true };
+    }
     return response;
   }
 
@@ -80,19 +76,14 @@ class UserService {
     if (unset) {
       updated.$unset = unset;
     }
-    await User.findOneAndUpdate(searchData,
-      updated,
-      { },
-      (errUser, user) => {
-        if (errUser) {
-          logger.error(errUser);
-          response = { client: config.client.response.errDatabase, error: true };
-        }
-        if (user) {
-          user.save();
-          response = { client: toClient, error: false };
-        }
-      });
+    try {
+      const user = await User.findOneAndUpdate(searchData, updated);
+      user.save();
+      response = { client: toClient, error: false };
+    } catch (error) {
+      logger.error(error);
+      response = { client: config.client.response.errDatabase, error: true };
+    }
     return response;
   }
 }

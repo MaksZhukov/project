@@ -2,7 +2,7 @@ import { handleActions } from 'redux-actions';
 import {
   getDataFiltersError, getDataFiltersSuccess, getDataFiltersLoading,
   getDataGamesError, getDataGamesSuccess, getDataGamesLoading,
-  changeData, resetData,
+  changeData, resetData, changeGameFavorite,
 } from '../actions/game';
 import { RATING } from '../constants';
 
@@ -16,7 +16,10 @@ const defaultState = {
     gameEngine: '',
     PEGLRating: '',
     gameMode: '',
-    rating: RATING,
+    rating: {
+      min: RATING.MIN,
+      max: RATING.MAX,
+    },
   },
   responseGetDataFilters: {},
   responseGetDataGames: {},
@@ -53,6 +56,15 @@ const reducer = handleActions({
       newState[element] = defaultState[element];
     });
     return { ...state, ...newState };
+  },
+  [changeGameFavorite](state, { payload: gameId }) {
+    const games = state.games.map((gameInfo) => {
+      if (gameInfo && gameInfo.id === gameId) {
+        return { ...gameInfo, favorite: !gameInfo.favorite };
+      }
+      return gameInfo;
+    });
+    return { ...state, games };
   },
 },
 defaultState);
