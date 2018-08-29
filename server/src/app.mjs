@@ -29,20 +29,15 @@ const io = socketIo(server);
 io.on('connect', (socket) => {
   socket.on('SEND_MESSAGE', (data) => {
     chatService.sendMessage(data).then((response) => {
-
+      io.emit('SEND_MESSAGE', response);
     });
-    io.emit('SEND_MESSAGE', data);
   });
   socket.on('GET_ALL_MESSAGES', () => {
     chatService.getAllMessages().then((response) => {
       io.emit('GET_ALL_MESSAGES', response);
     });
   });
-  socket.on('GET_MESSAGE', (data) => {
-    io.emit('GET_MESSAGE', data);
-  });
 });
 
-// chatService.sendMessage({ message: 'hel', userId: '5b8511dc7eca9006f8348d20' });
 
 export { app, server };

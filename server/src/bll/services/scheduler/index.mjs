@@ -31,7 +31,7 @@ function defineTaskRemoveMessages() {
     }
   });
 
-  agenda.every('1 days', 'remove messages');
+  agenda.every('1 hours', 'remove messages');
 }
 
 function start() {

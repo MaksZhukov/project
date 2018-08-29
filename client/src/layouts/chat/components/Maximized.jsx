@@ -32,12 +32,14 @@ const styles = () => ({
 class Maximized extends React.PureComponent {
   submit = (message) => {
     const { props } = this;
-    props.sendMessage({ message, userId: props.userId });
+    props.sendMessage({ message, userId: props.userId, date: new Date() });
   }
 
   render() {
     const { props } = this;
-    const { minimize, messages, classes } = props;
+    const {
+      minimize, messages, classes, userId,
+    } = props;
     return (
       <div className={classes.maximized}>
         <TitleBar
@@ -49,9 +51,9 @@ class Maximized extends React.PureComponent {
           title="Welcome to LiveChat"
         />
         <div className={classes.messageList}>
-          <MessageList active>
+          <MessageList active containScrollInSubtree>
             {messages.map(messageInfo => (
-              <Message key={messageInfo.date} authorName={messageInfo.name} date={moment(messageInfo.date).format('MMMM DD hh:mm')}>
+              <Message isOwn={messageInfo.id === userId} key={messageInfo.date} authorName={messageInfo.name} date={moment(messageInfo.date).format('DD MMM H:mm')}>
                 <MessageText>
                   {messageInfo.message}
                 </MessageText>

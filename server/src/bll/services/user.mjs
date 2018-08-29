@@ -17,7 +17,7 @@ class UserService {
         };
       }
       if (user && user.active && searchData.pass) {
-        response = { isUser: true, user: { name: user.name } };
+        response = { isUser: true, user: { name: user.name, id: user.id } };
       }
       if (user && !user.active) {
         response = {

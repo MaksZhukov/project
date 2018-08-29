@@ -1,11 +1,6 @@
 import { createAction } from 'redux-actions';
 import { chat } from '../actionTypes';
 
-export const getMessage = createAction(chat.GET_MESSAGE.ACTION);
-export const getMessageSuccess = createAction(chat.GET_MESSAGE.SUCCESS);
-export const getMessageError = createAction(chat.GET_MESSAGE.ERROR);
-export const getMessageLoading = createAction(chat.GET_MESSAGE.LOADING);
-
 export const getAllMessages = createAction(chat.GET_ALL_MESSAGES.ACTION);
 export const getAllMessagesSuccess = createAction(chat.GET_ALL_MESSAGES.SUCCESS);
 export const getAllMessagesError = createAction(chat.GET_ALL_MESSAGES.ERROR);

@@ -1,22 +1,17 @@
 import { connect } from 'react-redux';
 import Chat from '../components/Chat';
 import {
-  getAllMessages,
-  getMessage,
   sendMessage,
   endConnect,
   startConnect,
 } from '../../../actions/chat';
-import { messagesSelector } from '../../../selectors';
 
 
 const mapStateToProps = state => ({
-  messages: messagesSelector(state),
+  messages: state.chat.messages,
 });
 
 const mapDispatchToProps = dispatch => ({
-  getAllMessages: () => dispatch(getAllMessages()),
-  getMessage: () => dispatch(getMessage()),
   sendMessage: data => dispatch(sendMessage(data)),
   endConnect: () => dispatch(endConnect()),
   startConnect: () => dispatch(startConnect()),

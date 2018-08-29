@@ -13,13 +13,9 @@ class Main extends React.PureComponent {
     if (token) {
       localStorage.setItem('token', token);
       props.checkToken(token);
-    } else {
+    } else if (props.location.pathname !== '/sign-up' || props.location.pathname !== '/pass-change') {
       props.push('/sign-in');
     }
-  }
-
-  getCustomLauncher(message) {
-    console.log(message);
   }
 
   render() {

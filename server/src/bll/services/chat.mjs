@@ -7,7 +7,11 @@ class ChatService {
   async getAllMessages() {
     let response = {};
     try {
-      const messages = (await Chat.find().populate('userId', 'name')).map(({ userId, message, created }) => ({ name: userId.name, message, date: created }));
+      const messages = (await Chat.find().populate('userId', 'name')).map(({
+        userId, message, created,
+      }) => ({
+        id: userId.id, name: userId.name, message, date: created,
+      }));
       response = { messages, ...config.client.response.getAllMessages };
     } catch (error) {
       logger.error(error);
@@ -15,11 +19,13 @@ class ChatService {
     return response;
   }
 
-  async sendMessage({ message, userId }) {
+  async sendMessage({ message, userId, date }) {
     let response = {};
     try {
-      await Chat.create({ message, userId });
-      response = { ...config.client.response.sendMessage };
+      const responseMessage = await Chat.populate(await Chat.create({ message, userId, created: date }), { path: 'userId', select: 'name' });
+      response = {
+        message, id: userId, date, name: responseMessage.userId.name,
+      };
     } catch (error) {
       logger.error(error);
     }
