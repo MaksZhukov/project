@@ -58,7 +58,10 @@ class Filters extends React.PureComponent {
       gameEngine: '',
       PEGIRating: '',
       gameMode: '',
-      rating: RATING,
+      rating: {
+        min: RATING.MIN,
+        max: RATING.MAX,
+      },
     },
     isOpenFilters: false,
   }
@@ -102,7 +105,10 @@ class Filters extends React.PureComponent {
         gameEngine: '',
         PEGIRating: '',
         gameMode: '',
-        rating: RATING,
+        rating: {
+          min: RATING.MIN,
+          max: RATING.MAX,
+        },
       },
       search: '',
     });
@@ -139,7 +145,7 @@ class Filters extends React.PureComponent {
           <ExpansionPanel className={classes.root} onChange={this.handleChangePanel}>
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
               <Typography className={classes.heading}>
-                Filters
+                Filters 
               </Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails className={classes.detailSearch}>
@@ -240,8 +246,8 @@ class Filters extends React.PureComponent {
                     Rating
                   </Typography>
                   <InputRange
-                    maxValue={RATING.max}
-                    minValue={RATING.min}
+                    maxValue={RATING.MAX}
+                    minValue={RATING.MIN}
                     value={filters.rating}
                     onChange={this.handleChangeFilters('rating')}
                   />

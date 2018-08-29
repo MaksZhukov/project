@@ -12,4 +12,5 @@ export const getDataGamesError = createAction(game.GET_DATA_GAMES.ERROR);
 export const getDataGamesLoading = createAction(game.GET_DATA_GAMES.LOADING);
 
 export const changeData = createAction('CHANGE_DATA');
+export const changeGameFavorite = createAction('CHANGE_GAME_FAVORITE');
 export const resetData = createAction('RESET_DATA');

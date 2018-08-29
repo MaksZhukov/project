@@ -19,4 +19,5 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model(config.dataBase.collections.users, UserSchema);
+export default mongoose.model(config.dataBase.collections.users, UserSchema,
+  config.dataBase.collections.users);
