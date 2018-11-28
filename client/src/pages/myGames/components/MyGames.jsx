@@ -71,6 +71,8 @@ class MyGames extends React.PureComponent {
     const { props } = this;
     const gamesBy4 = props.games.slice(index * COUNT_GAMES_ON_ROW,
       index * COUNT_GAMES_ON_ROW + COUNT_GAMES_ON_ROW);
+    const newStyle = { ...style };
+    delete newStyle.width;
     return (
       <CellMeasurer
         key={key}
@@ -79,9 +81,9 @@ class MyGames extends React.PureComponent {
         columnIndex={0}
         rowIndex={index}
       >
-        <Grid container key={index} spacing={40} style={style} className={props.classes.gridImages}>
+        <Grid container key={index} spacing={40} style={newStyle} className={props.classes.gridImages}>
           {gamesBy4.map(gameInfo => (
-            <Grid key={gameInfo.id} item xs={this.getCountColsGrid(gamesBy4.length)}>
+            <Grid key={gameInfo.id} item xs="auto" md={this.getCountColsGrid(gamesBy4.length)}>
               <CardMyGame
                 gameInfo={gameInfo}
                 addFavorite={props.addFavorite}

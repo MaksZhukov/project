@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import queryString from 'query-string';
 import NavBar from '../../navBar/NavBar';
+import ChatContainer from '../../chat/containers/Chat';
 import ExploreContainer from '../../../pages/explore/containers/Explore';
 import MyGamesContainer from '../../../pages/myGames/containers/MyGames';
 
@@ -12,7 +13,7 @@ class Main extends React.PureComponent {
     if (token) {
       localStorage.setItem('token', token);
       props.checkToken(token);
-    } else {
+    } else if (props.location.pathname !== '/sign-up' || props.location.pathname !== '/pass-change') {
       props.push('/sign-in');
     }
   }
@@ -28,6 +29,7 @@ class Main extends React.PureComponent {
             <Route exact path="(/explore|/)" component={ExploreContainer} />
             <Route exact path="/my-games" component={MyGamesContainer} />
           </Switch>
+          <ChatContainer userId={props.user.userInfo.id} />
         </div>
       );
     }

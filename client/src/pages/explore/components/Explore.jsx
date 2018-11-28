@@ -41,7 +41,7 @@ class Explore extends React.PureComponent {
   componentWillUnmount() {
     const { props } = this;
     const { resetData } = props;
-    resetData(['games']);
+    resetData(['games', 'search']);
   }
 
   handlerScroll = ({ scrollTop, scrollHeight, clientHeight }) => {
@@ -73,6 +73,8 @@ class Explore extends React.PureComponent {
     const { props } = this;
     const gamesBy4 = props.games.slice(index * COUNT_GAMES_ON_ROW,
       index * COUNT_GAMES_ON_ROW + COUNT_GAMES_ON_ROW);
+    const newStyle = { ...style };
+    delete newStyle.width;
     return (
       <CellMeasurer
         key={key}
@@ -81,9 +83,9 @@ class Explore extends React.PureComponent {
         columnIndex={0}
         rowIndex={index}
       >
-        <Grid container key={index} spacing={40} style={style}>
+        <Grid container key={index} spacing={40} style={newStyle}>
           {gamesBy4.map(gameInfo => (
-            <Grid key={gameInfo.id} item xs={3}>
+            <Grid key={gameInfo.id} item xs={12} md={6} lg={3}>
               <CardGame
                 gameInfo={gameInfo}
                 userId={props.userId}
@@ -117,7 +119,6 @@ class Explore extends React.PureComponent {
         />
         <AutoSizer>
           {({ height, width }) => (<List
-            ref={(node) => { this.list = node; }}
             onScroll={this.handlerScroll}
             className={classes.gridImages}
             width={width}

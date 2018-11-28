@@ -17,6 +17,7 @@ import { NO_CONTENT_API_GAME } from '../../../constants';
 const styles = theme => ({
   card: {
     maxWidth: 400,
+    margin: 'auto',
   },
   media: {
     height: 0,

@@ -38,7 +38,8 @@ class SignIn extends React.PureComponent {
   render() {
     const { mail, pass, isToken } = this.state;
     const { user } = this.props;
-    const loading = user.responseForgotPass.loading === true || user.responseSignIn.loading === true;
+    const loading = user.responseForgotPass.loading === true
+    || user.responseSignIn.loading === true;
     if (user.responseCheckToken.loading === false || !isToken) {
       if (!user.userInfo) {
         return (
@@ -49,6 +50,7 @@ class SignIn extends React.PureComponent {
                   sign in
                 </Link>
                 <Link to="/sign-up" className="btn text-uppercase link-sign-up">
+
                   join us!
                 </Link>
               </div>
@@ -74,7 +76,7 @@ class SignIn extends React.PureComponent {
                 Sign In With
               </div>
               <div className="form-group mb-none">
-                <a href="http://localhost:3000/sign-in/facebook" className="form-sign-in-facebook btn btn-blue">
+                <a href={`${config.serverUrl}/sign-in/facebook`} className="form-sign-in-facebook btn btn-blue">
                   Facebook
                 </a>
               </div>

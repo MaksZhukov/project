@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, createStyles } from '@material-ui/core/styles';
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
@@ -18,7 +18,7 @@ import Grid from '@material-ui/core/Grid';
 import FormControl from '@material-ui/core/FormControl';
 import { PEGI_RATING, RATING } from '../../../constants';
 
-const styles = theme => ({
+const styles = theme => createStyles({
   root: {
     width: '100%',
     alignSelf: 'flex-start',
@@ -45,6 +45,14 @@ const styles = theme => ({
   },
   menuSelect: {
     width: 500,
+  },
+  '@media (max-width: 960px)': {
+    detailSearch: {
+      width: '200px',
+      paddingLeft: '5%',
+      marginRight: '30px',
+      marginLeft: '70px',
+    },
   },
 });
 
@@ -145,7 +153,7 @@ class Filters extends React.PureComponent {
           <ExpansionPanel className={classes.root} onChange={this.handleChangePanel}>
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
               <Typography className={classes.heading}>
-                Filters 
+                  Filters
               </Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails className={classes.detailSearch}>
@@ -256,7 +264,7 @@ class Filters extends React.PureComponent {
             </ExpansionPanelDetails>
             <ExpansionPanelActions>
               <Button size="small" onClick={this.handleCancel}>
-                  Cancel
+             Cancel
               </Button>
               <Button size="small" color="primary" onClick={this.handleSearch}>
                   Search

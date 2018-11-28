@@ -59,11 +59,10 @@ const reducer = handleActions({
   },
   [changeGameFavorite](state, { payload: gameId }) {
     const games = state.games.map((gameInfo) => {
-      const game = { ...gameInfo };
-      if (game && game.id === gameId) {
-        game.favorite = !game.favorite;
+      if (gameInfo && gameInfo.id === gameId) {
+        return { ...gameInfo, favorite: !gameInfo.favorite };
       }
-      return game;
+      return gameInfo;
     });
     return { ...state, games };
   },

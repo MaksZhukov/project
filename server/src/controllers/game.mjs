@@ -1,6 +1,6 @@
 import gameService from '../bll/services/game.mjs';
 import myGamesService from '../bll/services/myGames.mjs';
-import app from '../app.mjs';
+import { app } from '../app.mjs';
 
 app.get('/api/get-data-filters', (req, res) => {
   gameService.getDataFilters().then((responseFiltersData) => {

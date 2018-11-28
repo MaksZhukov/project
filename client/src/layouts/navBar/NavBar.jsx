@@ -13,6 +13,7 @@ const styles = ({
   appBar: {
     position: 'relative',
     padding: '8px',
+    zIndex: '55',
   },
   link: {
     color: '#fff',
@@ -51,9 +52,9 @@ class NavBar extends React.PureComponent {
               </Grid>
               <Grid item xs />
               <Grid item xs="auto">
-                <Link to="/user/:id" className={classes.link}>
-                  {user.userInfo.name}
-                </Link>
+                <Typography color="inherit">
+                  {user.userInfo.name.toUpperCase()}
+                </Typography>
               </Grid>
             </Grid>
           </AppBar>

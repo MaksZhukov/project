@@ -1,5 +1,5 @@
 import myGamesService from '../bll/services/myGames.mjs';
-import app from '../app.mjs';
+import { app } from '../app.mjs';
 
 app.post('/api/add-favorite', (req, res) => {
   const { userId, gameId } = req.body;
