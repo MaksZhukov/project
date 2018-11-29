@@ -133,7 +133,8 @@ app.get('/sign-up/facebook/callback',
           }
         });
       } else {
-        userService.updateUser({ profileId: user.id }, { token: user.accessToken }, null, config.client.response.signIn)
+        userService.updateUser({ profileId: user.id },
+          { token: user.accessToken }, null, config.client.response.signIn)
           .then(() => {
             const redirectUri = `${config.urlClient}/sign-up?token=${user.accessToken}`;
             res.redirect(redirectUri);

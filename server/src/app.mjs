@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 import bodyParser from 'body-parser';
 import socketIo from 'socket.io';
 import fileUpload from 'express-fileupload';
@@ -21,6 +22,13 @@ const server = app.listen(config.portServer, () => {
   logger.info(`Listening on port ${config.portServer}`);
   console.log(`Listening on port ${config.portServer}`);
 });
+
+if (config.util.getEnv('NODE_ENV') === 'production') {
+  app.use(express.static('../client/dist'));
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve('../client/dist/index.html'));
+  });
+}
 
 agenda.start();
 
