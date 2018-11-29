@@ -10,6 +10,7 @@ import passport from './common/helpers/passport/index.mjs';
 
 import logger from './common/helpers/winston/index.mjs';
 
+console.log(config)
 const app = express();
 
 app.use(bodyParser.json());
