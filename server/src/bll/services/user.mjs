@@ -48,7 +48,7 @@ class UserService {
     const token = jwt.sign({ mail }, config.jsonWebToken.secret, config.jsonWebToken.expresIn);
     try {
       const info = await transporter.sendMail({
-        from: config.client.mailRegistration.from, to: mail, subject: options.subject, html: `<b>${options.text}: </b><a href="${options.urlHost}/${options.path}?token=${token}">link</a>`,
+        from: config.client.mailRegistration.from, to: mail, subject: options.subject, html: `<b>${options.text}: </b><a href="${options.urlHost}/${options.path}?token_recovery=${token}">link</a>`,
       });
       logger.info(info);
       response = { client: { status: 'warning', message: options.message }, token };

@@ -72,6 +72,8 @@ app.post('/api/recovery-pass', (req, res) => {
               res.json(responseMail.client);
             }
           });
+        } else {
+          res.json(responseMail.client)
         }
       });
     }

@@ -10,7 +10,6 @@ import passport from './common/helpers/passport/index.mjs';
 
 import logger from './common/helpers/winston/index.mjs';
 
-console.log(config)
 const app = express();
 
 app.use(bodyParser.json());
@@ -23,13 +22,6 @@ const server = app.listen(config.portServer, () => {
   logger.info(`Listening on port ${config.portServer}`);
   console.log(`Listening on port ${config.portServer}`);
 });
-
-if (config.util.getEnv('NODE_ENV') === 'production') {
-  app.use(express.static('../client/dist'));
-  app.get('/', (req, res) => {
-    res.sendFile(path.resolve('../client/dist/index.html'));
-  });
-}
 
 agenda.start();
 

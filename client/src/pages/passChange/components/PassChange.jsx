@@ -16,7 +16,7 @@ class PassChange extends React.PureComponent {
 
   componentDidMount() {
     const { props } = this;
-    const { token } = queryString.parse(props.location.search);
+    const { token_recovery : token } = queryString.parse(props.location.search);
     this.setState({ token });
     if (token) {
       props.checkTokenChangePass(token);
@@ -74,7 +74,7 @@ class PassChange extends React.PureComponent {
           </React.Fragment>
         );
       }
-      return <Redirect to="/" />;
+      return <Redirect to="/sign-in" />;
     }
     return null;
   }
