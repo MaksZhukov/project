@@ -10,7 +10,7 @@
     "server-prod": "cd server && npm run prod",
     "eslint": "eslint --ext .js,.jsx .",
     "test": "jest",
-    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run prod"
+    "heroku-postbuild": "cd server && npm install --only=dev"
   },
   "pre-commit": [
     "eslint"
